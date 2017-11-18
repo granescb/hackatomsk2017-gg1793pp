@@ -22,6 +22,14 @@ var RoomModel = new Schema({
         type: Boolean,
         default: true
     },
+    dateStarting: {
+        type: Date,
+        default: Date.now
+    },
+    userBets: {
+        type: Array,
+        default : []
+    }
     // createdAt: {
     //     type: Date,
     //     default: Date.now,
