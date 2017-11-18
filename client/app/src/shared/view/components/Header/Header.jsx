@@ -20,7 +20,7 @@ class Header extends React.Component {
     return (
       <div className={b}>
         <Link className={b('wrapper', { position: 'left' })} to={'/roulette'}>
-          <img src={logoImg} alt="" />
+          <img className={b('logo-wrapper')} src={logoImg} alt="" />
           <p className={b('text')}>Betting-software</p>
         </Link>
         <div className={b('wrapper', { position: 'center' })}></div>
@@ -38,10 +38,7 @@ class Header extends React.Component {
                 <div>Снять</div>
               </Link>
             </div>
-            <div className={b('user-avatar')}>
-              <img src={avatarImg} />
-            </div>
-
+            <img className = {b('user-avatar')} src={avatarImg} />
           </div>
         </div>
       </div>

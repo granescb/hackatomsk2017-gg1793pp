@@ -30,12 +30,16 @@ class Rooms extends Component {
       <RoomItem
         text={typeRoom[key].text}
         id={typeRoom[key].id}
+        iconFileNames = {typeRoom[key].iconFileNames}
         isActive={typeRoom[key].id === activeRoom}
         onClickItem={this.onClickRoom}
       />,
     );
     return (
       <div className={b}>
+        <div className={b('caption')}>
+          Комнаты
+        </div>
         {layout}
       </div>
     );
