@@ -1,10 +1,12 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    ObjectIdSchema = Schema.ObjectId,
+    ObjectId = mongoose.Types.ObjectId,
     db = require('../model');
-    // mongoose.createConnection('mongodb://localhost:27017/roulette');
 
 var UserModel = new Schema({
-    login: String,
+    id: {type:ObjectIdSchema, default: function () { return new ObjectId()} },
+    login: {type: String, unique: true},
     password: String,
     createdAt: {
         type: Date,
@@ -14,8 +16,15 @@ var UserModel = new Schema({
     balance: {
         type: Number,
         default: 0
-    }
+    },
+    currentRoom: ObjectIdSchema
 });
+UserModel.methods.create = function (login, password) {
+    var greeting = this.login
+        ? "My name is " + this.login
+        : "I don't have a name";
+    console.log(greeting);
+};
 UserModel.methods.speak = function () {
     var greeting = this.login
         ? "My name is " + this.login
