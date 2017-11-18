@@ -22,22 +22,22 @@ var RoomModel = new Schema({
         type: Boolean,
         default: true
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        expires: 120
-    }
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now,
+    // }
 });
 
-RoomModel.getNotFullRoom = function (person) {
-    this.findOne({'isActive': true}).where('maxCount').gt('currentCount').exec(
-        function (err, room) {
-            if (err) console.log('error '+err);
-            else{
-                console.log(room.isActive);
-            }
-        }
-    )
-};
+
+// RoomModel.getNotFullRoom = function (person) {
+//     this.findOne({'isActive': true}).where('maxCount').gt('currentCount').exec(
+//         function (err, room) {
+//             if (err) console.log('error '+err);
+//             else{
+//                 console.log(room.isActive);
+//             }
+//         }
+//     )
+// };
 
 module.exports = db.model('Room', RoomModel);
