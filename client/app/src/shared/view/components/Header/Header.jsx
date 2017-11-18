@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import block from 'bem-cn';
 import { Link } from 'react-router';
+import SVGInline from 'react-svg-inline';
 
 import AuthBlock from 'features/auth';
-import logoImg from './img/logo.svg';
+import logoImg from './img/logo.png';
+import avatarImg from './img/avatar.png'
 import './Header.styl';
 
 class Header extends React.Component {
@@ -23,15 +25,24 @@ class Header extends React.Component {
         </Link>
         <div className={b('wrapper', { position: 'center' })}></div>
         <div className={b('wrapper', { position: 'right' })}>
-          <Link className={b('button')} to={'/top-up'}>
-            <div>Пополнить</div>
-          </Link>
-          <Link className={b('button')} to={'/withdrawal'}>
-            <div>Снять</div>
-          </Link>
-          <AuthBlock 
-            extraParams={extraParams}
-          />
+          <div className={b('user-wrapper')}>
+          <div>
+            <AuthBlock 
+              extraParams={extraParams}
+            />  
+            
+              <Link className={b('button')} to={'/top-up'}>
+                <div>Пополнить счет</div>
+              </Link>
+              <Link className={b('button')} to={'/withdrawal'}>
+                <div>Снять</div>
+              </Link>
+            </div>
+            <div className={b('user-avatar')}>
+              <img src={avatarImg} />
+            </div>
+
+          </div>
         </div>
       </div>
     );
