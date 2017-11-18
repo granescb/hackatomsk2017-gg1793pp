@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import block from 'bem-cn';
 import { Link } from 'react-router';
+import SVGInline from 'react-svg-inline';
 
 import AuthBlock from 'features/auth';
-import logoImg from './img/logo.svg';
+import logoImg from './img/logo.png';
 import './Header.styl';
 
 class Header extends React.Component {
