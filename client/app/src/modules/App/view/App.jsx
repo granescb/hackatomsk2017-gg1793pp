@@ -43,8 +43,8 @@ class App extends Component {
     return (
       <div className={b}>
         { 
-            // isUserAuthenticated
-            true
+            isUserAuthenticated
+            // true
             ?
               <AppComponent>
                 {this.props.children}

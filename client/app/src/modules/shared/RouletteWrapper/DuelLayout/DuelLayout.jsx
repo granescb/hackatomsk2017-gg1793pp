@@ -20,6 +20,7 @@ class DuelLayout extends Component {
   @bind
   onClickStart() {
     console.log('start');
+    debugger
     this.props.addUserName();
   }
   render() {

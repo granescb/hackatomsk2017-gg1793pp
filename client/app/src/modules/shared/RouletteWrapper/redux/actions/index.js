@@ -9,8 +9,7 @@ function addUserName() {
     dispatch({ type: actionTypes.ACTION_PROCESSING });
     const { api } = extra;
     const response = await api.roulette.addUserName();
-    debugger
-    if (response.success) dispatch({ type: actionTypes.ADD_USER_NAME, payload: response.data });
+    if (response.success) dispatch({ type: actionTypes.ADD_USER_NAME });
     else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
   };
 }

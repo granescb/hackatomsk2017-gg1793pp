@@ -6,7 +6,7 @@ class Api {
   constructor(baseUrl = '') {
     this.auth = new AuthApi(baseUrl);
     this.payment = new PaymentApi(baseUrl);
-    this.rolette = new RouletteApi(baseUrl);
+    this.roulette = new RouletteApi(baseUrl);
   }
 
 }
