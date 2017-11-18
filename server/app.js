@@ -53,7 +53,7 @@ app.use(function(err, req, res, next) {
 });
 // test init user
 var newUser =  new UserModel({login: 'test',
-      password: 'test'});
+      password: 'test', balance: 500});
     newUser.save(function (err, newUser) {
       if (err){
           if (newUser){
@@ -69,16 +69,16 @@ var newUser =  new UserModel({login: 'test',
     });
 // test init room
 var room = new RoomModel({});
-room.save(function (err, room) {
-  if (err){
-      if (room){
-       console.log("Something goes wrong with user " + room.id);
-      }
-      else{
-          console.log("Something goes wrong");
-      }
-  }
-});
+// room.save(function (err, room) {
+//   if (err){
+//       if (room){
+//        console.log("Something goes wrong with user " + room.id);
+//       }
+//       else{
+//           console.log("Something goes wrong");
+//       }
+//   }
+// });
 
 app.listen(8000, function () {
   console.log('Example app listening on port 8000!');

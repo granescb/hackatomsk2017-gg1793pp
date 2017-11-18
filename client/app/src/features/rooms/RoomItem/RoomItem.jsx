@@ -9,18 +9,25 @@ class RoomItem extends Component {
     text: PropTypes.string.isRequired,
 
     onClickItem: PropTypes.func.isRequired,
-    
+
+    iconFileNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+
     id: PropTypes.number.isRequired,
 
     isActive: PropTypes.bool.isRequired,
   }
   render() {
     const b = block('room-item');
-    const { text, onClickItem, id, isActive } = this.props;
+    const { text, onClickItem, id, isActive, iconFileNames } = this.props;
     return (
-      <Link to={'/roulette'} className={b}>
-        <div onClick={() => onClickItem(id)} className={b('text', { isActive })}>{text}</div>
-      </Link>
+      <div onClick={() => onClickItem(id)} className={b({ isActive })}>
+        <div className={b('icon-wrapper')}>
+          <img className={b('icon')} src={iconFileNames} />
+        </div>
+        <div className={b('text', { isActive })}>
+          {text}
+        </div>
+      </div>
     );
   }
 }

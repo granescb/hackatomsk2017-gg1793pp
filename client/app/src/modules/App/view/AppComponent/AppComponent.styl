@@ -3,24 +3,24 @@
   height 100%
   min-width 1220px
   overflow hidden
-  
+  background-image url('../img/background.png')
+  background-repeat no-repeat
+  background-size cover
   &__content
     position relative
     display flex
     align-items stretch
-    justify-content space-between
-    margin 0.3rem 0rem
     margin-bottom 0
     align-items flex-start
     justify-content space-between
-    margin 0.3rem 0rem
-    
+    margin 1.3rem 0rem
     &_position
       &_left-block
         flex-shrink 0
-        width 10.5%
-        background-color #ddd
-
+        width 15.5%
+        min-height calc(100vh - 125px)
+        display flex;
+        justify-content center
       &_center-block
         display flex
         flex-direction column
