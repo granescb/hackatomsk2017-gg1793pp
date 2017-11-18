@@ -1,0 +1,10 @@
+{
+  "presets": ["es2015", "react", "stage-0", "flow"],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-runtime",
+    "transform-regenerator",
+    "transform-async-to-generator"
+  ],
+  "compact": "auto"
+}
