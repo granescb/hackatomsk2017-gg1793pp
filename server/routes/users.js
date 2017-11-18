@@ -5,6 +5,19 @@ var db = require('../model');
 var myResponse = require('../utils/response');
 
 
+function saveObj(ogj) {
+    ogj.save(function (err, person) {
+      if (err){
+          if (person){
+           console.log("Something goes wrong with user " + ogj.login);
+          }
+          else{
+              console.log("Something goes wrong");
+          }
+      }
+    });
+}
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -73,6 +86,19 @@ router.get('/balance', function(req, res, next) {
      if (err) return handleError(err);
      else if (person){
         console.log(person);
+        response = myResponse(0, {'balance': person.balance}, '');
+        res.send(response)
+     }
+    });
+});
+
+router.post('/topup/fantic', function(req, res, next) {
+    UserModel.findOne({'login': req.session.username}, function (err, person) {
+     if (err) return handleError(err);
+     else if (person){
+        console.log(person);
+        person.balance += parseFloat(req.body.amount);
+        saveObj(person);
         response = myResponse(0, {'balance': person.balance}, '');
         res.send(response)
      }
