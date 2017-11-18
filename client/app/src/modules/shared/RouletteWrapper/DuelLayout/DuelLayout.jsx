@@ -34,7 +34,7 @@ class DuelLayout extends Component {
     return (
       <div className={b()}>
         <div className={b('timer-container')}>
-          <Timer />
+          {/* <Timer /> */}
           <div className={b('button')}>
             <Button disabled={isOpenRoom} onClick={() => this.onClickStart()}>Старт</Button>
           </div>
