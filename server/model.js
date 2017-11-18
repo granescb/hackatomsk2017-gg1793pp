@@ -1,8 +1,12 @@
 var mongoose = require('mongoose'),
-  db = mongoose.createConnection('mongodb://localhost/roulette');
+db = mongoose.connect('mongodb://localhost/roulette', {server:{
+        poolSize: 10
+    }
+});
 
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function callback () {
+
+mongoose.connection.on("error", console.error.bind(console, "connection error:"));
+mongoose.connection.once("open", function callback () {
     console.log("Connected!")
 });
 
