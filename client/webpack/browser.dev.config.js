@@ -78,7 +78,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, '..', 'app', 'web'),
     inline: true,
-    port: 8000,
+    port: 8080,
     historyApiFallback: true,
   },
 };
