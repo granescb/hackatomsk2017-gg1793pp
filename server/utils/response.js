@@ -1,4 +1,4 @@
-function response(status, result, error) {
+function myResponse(status, result, error) {
     response = {
         'status': status,
         'result': result,
@@ -6,4 +6,6 @@ function response(status, result, error) {
     };
     return response
 }
-module.exports = response;
+
+module.exports = myResponse;
+
