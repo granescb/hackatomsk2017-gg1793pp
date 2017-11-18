@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Route } from 'react-router';
 
-import { reducer } from 'modules/Roulette/redux';
-
 import Layout from './view/Layout';
 
 class RouletteLayout {
@@ -14,9 +12,6 @@ class RouletteLayout {
     );
   }
 
-  getReducer() {
-    return { name: 'roulette', reducer };
-  }
 }
 
 export default RouletteLayout;
