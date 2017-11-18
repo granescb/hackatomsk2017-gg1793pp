@@ -1,2 +1,10 @@
 server/node_modules
 .idea
+client/node_modules
+build/
+npm-debug.log
+web
+.cache
+.vscode
+.DS_Store
+.idea
