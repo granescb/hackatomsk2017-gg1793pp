@@ -16,13 +16,21 @@ router.post('/signup', function(req, res, next) {
     newUser.speak();
     newUser.save(function (err, newUser) {
       if (err){
-          console.log("Something goes wrong with user " + newUser.login);
+          //TODO
+              // Требуется вываливание ошибок
+          if (err.code==11000){
+            console.log("Username is user");
+          }
+          else console.log("Something goes wrong with user " + newUser.login);
+          response = myResponse(err.code, {}, 'User is deprecated');
+
       }
       else{
-          newUser.speak();
+          response = myResponse(0, {'login': newUser.login,
+                    'balance': newUser.balance}, '');
       }
+      res.send(response);
     });
-    res.send('Ok');
 });
 // this testing function
 router.get('/list', function(req, res, next) {
@@ -42,10 +50,11 @@ router.post('/login', function (req, res, next) {
         'password': req.body.password
     }, function (err, person) {
         if (err) console.log('Error sign-in');
-        else {
+        else if(person){
             if (person.login){
                 req.session.authorized = true;
                 req.session.username = person.login;
+                req.session.userId = person.id;
                 req.cookies.user = person.login;
                 console.log(person.login + (' is Login!'));
                 response = myResponse(0, {'login': person.login,

@@ -7,9 +7,11 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 const db = require('./config/db');
 var UserModel = require('./models/userModel');
+var RoomModel = require('./models/roomModel');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var rooms = require('./routes/rooms');
 
 var app = express();
 
@@ -30,6 +32,7 @@ app.use(bodyParser());
 
 app.use('/', index);
 app.use('/api/user', users);
+app.use('/api/rooms', rooms);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,12 +56,29 @@ var newUser =  new UserModel({login: 'test',
       password: 'test'});
     newUser.save(function (err, newUser) {
       if (err){
-          console.log("Something goes wrong " + err);
+          if (newUser){
+           console.log("Something goes wrong with user " + newUser.login);
+          }
+          else{
+              console.log("Something goes wrong");
+          }
       }
       else{
           newUser.speak();
       }
     });
+// test init room
+var room = new RoomModel({});
+room.save(function (err, room) {
+  if (err){
+      if (room){
+       console.log("Something goes wrong with user " + room.id);
+      }
+      else{
+          console.log("Something goes wrong");
+      }
+  }
+});
 
 app.listen(8000, function () {
   console.log('Example app listening on port 8000!');
