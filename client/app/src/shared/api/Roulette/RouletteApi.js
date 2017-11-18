@@ -11,10 +11,18 @@ class RouletteApi extends BaseApi {
   }
 
   @bind
-  addUserName() {
+  addUserRoom() {
     return this.sendQuery(
       this.queryTypes.GET,
       `${this.baseUrl}/rooms/user/add`,
+    );
+  }
+
+  @bind
+  pullingStatusRoom() {
+    return this.sendQuery(
+      this.queryTypes.GET,
+      `${this.baseUrl}/pulling`,
     );
   }
 

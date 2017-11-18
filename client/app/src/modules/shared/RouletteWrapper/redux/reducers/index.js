@@ -10,8 +10,8 @@ function reducer(state = initialState, action) {
     case actionTypes.ACTION_PROCESSING:
       return imState
           .setIn(['actionProcessing'], true)
-          .setIn(['actionSuccess'], false)
           .setIn(['errorMessage'], null)
+          .setIn(['isOpenRoom'], false)
           .toJS();
 
     case actionTypes.ACTION_FAILURE:
@@ -19,23 +19,15 @@ function reducer(state = initialState, action) {
           .setIn(['actionProcessing'], false)
           .setIn(['actionSuccess'], false)
           .setIn(['errorMessage'], action.payload)
+          .setIn(['isOpenRoom'], false)
           .toJS();
 
-    case actionTypes.SIGN_IN_SUCCESS:
+    case actionTypes.ADD_USER_ROOM:
       return imState
           .setIn(['actionProcessing'], false)
           .setIn(['errorMessage'], null)
-          .setIn(['isAuthenticated'], true)
-          .setIn(['balance'], action.payload.balance)
-          .setIn(['userName'], action.payload.login)
-          .setIn(['actionSuccess'], true)
+          .setIn(['isOpenRoom'], true)
           .toJS();
-    
-    case actionTypes.GET_USER_BALANCE:
-      return imState
-          .setIn(['balance'], action.payload)
-          .toJS();
-
     default: 
       return imState.toJS();
   }

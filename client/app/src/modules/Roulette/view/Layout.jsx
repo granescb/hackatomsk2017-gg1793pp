@@ -12,7 +12,6 @@ class Layout extends Component {
     const b = block('roulette-page');
     return (
       <div className={b()}>
-        <p>Розыгрыш начался</p>
         <RouletteWrapper />
       </div>
     );

@@ -3,6 +3,7 @@ import block from 'bem-cn';
 import { bind } from 'decko'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import asyncPoll from 'react-async-poll';
 
 import { actions as rouletteActions } from 'modules/shared/RouletteWrapper';
 
@@ -12,26 +13,34 @@ import './DuelLayout.styl';
 
 class DuelLayout extends Component {
   static propTypes = {
-    activeRoom: PropTypes.number.isRequired,
+    addUserRoom: PropTypes.func.isRequired,
+    startPolling: PropTypes.func.isRequired,
+    pullingStatusRoom: PropTypes.func.isRequired,
 
-    addUserName: PropTypes.func.isRequired,
+    isOpenRoom: PropTypes.bool.isRequired,
   }
 
   @bind
   onClickStart() {
-    console.log('start');
-    debugger
-    this.props.addUserName();
+    const { addUserRoom } = this.props;
+    addUserRoom().then(() => {
+      this.props.startPolling();
+    });
   }
+
   render() {
     const b = block('duel-layout');
+    const { isOpenRoom } = this.props;
     return (
       <div className={b()}>
         <div className={b('timer-container')}>
           <Timer />
           <div className={b('button')}>
-            <Button onClick={() => this.onClickStart()}>Старт</Button>
+            <Button disabled={isOpenRoom} onClick={() => this.onClickStart()}>Старт</Button>
           </div>
+        </div>
+        <div className={b('message-container')}>
+          { isOpenRoom ? <p>Время идет!Пора делать ставку</p> : <p>Старт и делаем ставки!</p> }
         </div>
       </div>
     );
@@ -43,14 +52,23 @@ class DuelLayout extends Component {
 function mapStateToProps(state) {
   return {
     activeRoom: state.rooms.activeRoom,
+
+    isOpenRoom: state.roulette.isOpenRoom,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   const actions = {
-    addUserName: rouletteActions.addUserName,
+    addUserRoom: rouletteActions.addUserRoom,
+    pullingStatusRoom: rouletteActions.pullingStatusRoom,
   };
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DuelLayout);
+function onPullingStatusRoom(props) {
+  if (!props.isOpenRoom) props.stopPolling();
+  else props.pullingStatusRoom();
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(asyncPoll(2 * 1000, onPullingStatusRoom)(DuelLayout));
+
