@@ -11,7 +11,6 @@ function signIn(email, password) {
   return async (dispatch, getState, extra) => {
     dispatch({ type: actionTypes.ACTION_PROCESSING });
     const { api } = extra;
-    console.log(email, password);
     const response = await api.auth.signIn(email, password);
     if (response.success) dispatch({ type: actionTypes.SIGN_IN_SUCCESS, payload: response.data });
     else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
@@ -19,12 +18,9 @@ function signIn(email, password) {
 }
 
 function signUp(email, password) {
-  debugger
   return async (dispatch, getState, extra) => {
     dispatch({ type: actionTypes.ACTION_PROCESSING });
     const { api } = extra;
-    
-    console.log(email, password);
     const response = await api.auth.signUp(email, password);
     if (response.success) dispatch({ type: actionTypes.SIGN_UP_SUCCESS, payload: response.data });
     else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
