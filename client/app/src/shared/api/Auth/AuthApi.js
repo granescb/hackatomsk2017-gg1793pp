@@ -14,8 +14,10 @@ class AuthApi extends BaseApi {
   signIn(email, password) {
     return this.sendQuery(
       this.queryTypes.POST,
-      `${this.baseUrl}/login/email`,
-      { email, password },
+      `${this.baseUrl}/login`,
+      {
+        login: email,
+        password: password },
     );
   }
 }
