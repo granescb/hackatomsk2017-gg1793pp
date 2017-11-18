@@ -53,7 +53,7 @@ var newUser =  new UserModel({login: 'test',
       password: 'test'});
     newUser.save(function (err, newUser) {
       if (err){
-          console.log("Something goes wrong with user " + newUser.login);
+          console.log("Something goes wrong " + err);
       }
       else{
           newUser.speak();
