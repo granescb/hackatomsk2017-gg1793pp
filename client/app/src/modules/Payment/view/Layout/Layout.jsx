@@ -4,7 +4,7 @@ import { bind } from 'decko';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { TopUpLayout } from 'features/view/payment';
+import { TopUpLayout } from 'features/payment/';
 import './Layout.styl';
 
 class PaymentLayout extends Component {

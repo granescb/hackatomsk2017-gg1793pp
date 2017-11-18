@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './TopUpLayout.styl';
 import TopUpMethodBlock from './TopUpMethodBlock';
-import CardMethodBlock from './CardMethodBlock';
 
 class TopUpLayout extends Component {
 
