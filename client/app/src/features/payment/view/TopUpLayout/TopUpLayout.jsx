@@ -38,7 +38,7 @@ class TopUpLayout extends Component {
   onMethodTopUpClick(methodID, paymentInfo) {
     const { initBitapsPayment } = this.props;
     switch (methodID) {
-      case TopUpMethods.FREEKASSA.id:
+      case TopUpMethods.Bitaps.id:
         initBitapsPayment(paymentInfo);
         break;
       default:
@@ -48,9 +48,10 @@ class TopUpLayout extends Component {
 
   render() {
     const b = block('top-up-layout');
-    const { lang } = this.props;
     const methodBlocksList = Object.keys(TopUpMethods).map((key, index) =>
-    );
+      <TopUpMethodBlock key={index} onTopUpClick={this.onMethodTopUpClick} 
+        method={TopUpMethods[key]} />,
+  );
 
     return (
       <div className={b}>

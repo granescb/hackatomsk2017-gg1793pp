@@ -77,7 +77,7 @@ class TopUpMethodBlock extends Component {
                     type="number"
                     name="amount"
                     value={amount}
-                    placeholder={Dictionary.amount[lang]}
+                    placeholder={amount}
                     onChange={this.onInputChange}
                   />
                 </div>
