@@ -8,7 +8,6 @@ var TransferModel = new Schema({
     id: {type:ObjectIdSchema, default: function () { return new ObjectId()} },
     amount: {type: String, unique: true},
     fromUserId: ObjectIdSchema,
-    toUserId: ObjectIdSchema,
     // createdAt: {
     //     type: Date,
     //     default: Date.now,
