@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import block from 'bem-cn';
-import { bind } from 'decko';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 import { TopUpLayout } from 'features/payment/';
 import './Layout.styl';
