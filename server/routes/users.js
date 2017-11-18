@@ -58,4 +58,16 @@ router.post('/login', function (req, res, next) {
         }
     });
 });
+
+router.get('/balance', function(req, res, next) {
+    UserModel.findOne({'login': req.session.username}, function (err, person) {
+     if (err) return handleError(err);
+     else if (person){
+        console.log(person);
+        response = myResponse(0, {'balance': person.balance}, '');
+        res.send(response)
+     }
+    });
+});
+
 module.exports = router;

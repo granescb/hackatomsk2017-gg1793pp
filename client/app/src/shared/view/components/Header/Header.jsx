@@ -1,31 +1,25 @@
 import React, { PropTypes } from 'react';
 import block from 'bem-cn';
 import { Link } from 'react-router';
-import SVGInline from 'react-svg-inline';
 
+import AuthBlock from 'features/auth';
 import logoImg from './img/logo.svg';
 import './Header.styl';
 
 class Header extends React.Component {
 
   static propTypes = {
-
-    onMenuItemAuthBlockClick: PropTypes.func.isRequired,
+    extraParams: PropTypes.object.isRequired,
   }
 
   render() {
     const b = block('header');
+    const { extraParams } = this.props;
     return (
       <div className={b}>
-          <div className={b('img-container')}>
-            <SVGInline
-              svg={logoImg}
-              className={b('img')()}
-              classSuffix=""
-              onClick={this.onGoogleLoginClick}
-            />
-          </div>
         <Link className={b('wrapper', { position: 'left' })} to={'/roulette'}>
+          <img src={logoImg} alt="" />
+          <p className={b('text')}>Betting-software</p>
         </Link>
         <div className={b('wrapper', { position: 'center' })}></div>
         <div className={b('wrapper', { position: 'right' })}>
@@ -35,6 +29,9 @@ class Header extends React.Component {
           <Link className={b('button')} to={'/withdrawal'}>
             <div>Снять</div>
           </Link>
+          <AuthBlock 
+            extraParams={extraParams}
+          />
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ function response(status, result, error) {
     response = {
         'status': status,
         'result': result,
-        'errorMessage': error
+        'error_message': error
     };
     return response
 }
