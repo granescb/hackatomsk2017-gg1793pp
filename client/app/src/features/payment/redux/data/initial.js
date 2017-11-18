@@ -1,9 +1,9 @@
 const initialState = {
-    actionProcessing: false,
-    createWithdrawalSuccess: false,
-    errorMessage: null,
-    qiwiInitSuccess: false,
-  };
+  actionProcessing: false,
+  createWithdrawalSuccess: false,
+  errorMessage: null,
+  candyWrapperInitSuccess: false,
+};
   
-  export default initialState;
+export default initialState;
   

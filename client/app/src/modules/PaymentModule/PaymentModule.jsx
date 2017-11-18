@@ -4,10 +4,10 @@ import { bind } from 'decko';
 
 import Layout from './view/Layout/Layout';
 
-class Payment {
+class PaymentModule {
   getRoutes() {
-    return <Route key="Top-app" path="top-app" component={Layout} />;
+    return <Route key="top-app" path="top-app" component={Layout} />;
   }
 }
 
-export default Payment;
+export default PaymentModule;

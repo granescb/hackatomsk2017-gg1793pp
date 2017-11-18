@@ -6,7 +6,7 @@ import { Router, browserHistory, hashHistory } from 'react-router';
 import createRoutes from './routes';
 import configureStore, { createReducer } from './configureStore';
 import Api from './shared/api/Api';
-import { Payment } from './modules';
+import { PaymentModule } from './modules';
 import './App.styl';
 
 let history = hashHistory;
@@ -20,7 +20,7 @@ let api = new Api('http://localhost:8000');
 if (process.env.NODE_ENV == 'production') api = new Api('');
 
 const modules = [
-  new Payment(),
+  new PaymentModule(),
 ];
 const store = configureStore(modules, { api });
 const routes = createRoutes(modules, store);

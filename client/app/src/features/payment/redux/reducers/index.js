@@ -11,7 +11,7 @@ function reducer(state = initialState, action) {
         .setIn(['actionProcessing'], true)
         .setIn(['createWithdrawalSuccess'], false)
         .setIn(['errorMessage'], null)
-        .setIn(['qiwiInitSuccess'], false)
+        .setIn(['candyWrapperInitSuccess'], false)
         .toJS();
 
     case actionTypes.ACTION_FAILURE:
@@ -29,13 +29,13 @@ function reducer(state = initialState, action) {
     case actionTypes.INIT_BITAPS_PAYMENT_SUCCESS:
       return imState
         .setIn(['actionProcessing'], false)
-        .setIn(['qiwiInitSuccess'], true)
+        .setIn(['bitapsInitSuccess'], true)
         .toJS();
 
     case actionTypes.INIT_CANDY_WRAPPER_PAYMENT_SUCCESS:
       return imState
         .setIn(['actionProcessing'], false)
-        .setIn(['freekassaInitSuccess'], true)
+        .setIn(['candyWrapperInitSuccess'], true)
         .toJS();
         
     default:

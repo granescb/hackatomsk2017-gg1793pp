@@ -1,1 +1,1 @@
-export Payment from './Payment';
+export PaymentModule from './PaymentModule/PaymentModule';
