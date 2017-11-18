@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import block from 'bem-cn';
 import { bind } from 'decko';
-import { actions, TopUpMethods } from 'features/payment/redux';
+import { actions as paymentActions, TopUpMethods } from 'features/payment/redux';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './TopUpLayout.styl';
@@ -11,9 +11,9 @@ class TopUpLayout extends Component {
 
   static propTypes = {
     actionProcessing: PropTypes.bool.isRequired,
-    errorMessage: PropTypes.string,
+
     initBitapsPayment: PropTypes.func.isRequired,
-    onRequestError: PropTypes.func,
+    initCandyWrapper: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -24,21 +24,16 @@ class TopUpLayout extends Component {
     router: PropTypes.object,
   };
 
-  componentWillReceiveProps(nextProps) {
-    const { actionProcessing, errorMessage,
-            onRequestError, initBitapsPayment } = nextProps;
-    if (this.props.actionProcessing && !actionProcessing) {
-      onRequestError(errorMessage);
-    }
-  }
-
-
   @bind
-  onMethodTopUpClick(methodID, paymentInfo) {
-    const { initBitapsPayment } = this.props;
+  onMethodTopUpClick(methodID, amount) {
+    const { initBitapsPayment, initCandyWrapper } = this.props;
+    console.log(TopUpMethods.BITAPS.id);
     switch (methodID) {
-      case TopUpMethods.Bitaps.id:
-        initBitapsPayment(paymentInfo);
+      case TopUpMethods.BITAPS.id:
+        initBitapsPayment(methodID, amount);
+        break;
+      case TopUpMethods.CANDYWRAPPERS.id:
+        initCandyWrapper(methodID, amount);
         break;
       default:
         break;
@@ -48,8 +43,11 @@ class TopUpLayout extends Component {
   render() {
     const b = block('top-up-layout');
     const methodBlocksList = Object.keys(TopUpMethods).map((key, index) =>
-      <TopUpMethodBlock key={index} onTopUpClick={this.onMethodTopUpClick} 
-        method={TopUpMethods[key]} />,
+      <TopUpMethodBlock 
+        key={index}
+        onTopUpClick={this.onMethodTopUpClick} 
+        method={TopUpMethods[key]}
+        />,
   );
 
     return (
@@ -64,11 +62,14 @@ function mapStateToProps(state) {
   return {
     actionProcessing: state.payment.actionProcessing,
     errorMessage: state.payment.errorMessage,
-    initBitapsPayment: state.payment.qiwiInitSuccess,
   };
 }
 
 function mapDispatchToProps(dispatch) {
+  const actions = {
+    initCandyWrapper: paymentActions.initCandyWrapper,
+    initBitapsPayment: paymentActions.initBitapsPayment,
+  };
   return bindActionCreators(actions, dispatch);
 }
 

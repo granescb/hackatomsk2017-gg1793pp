@@ -4,6 +4,7 @@ import { bind } from 'decko';
 
 import Input from 'shared/view/components/Input';
 import Button from 'shared/view/components/Button';
+import './TopUpMethodBlock.styl';
 
 import { RequisitesTypes } from 'features/payment/redux';
 
@@ -18,8 +19,6 @@ class TopUpMethodBlock extends Component {
       requisitesType: PropTypes.string,
     }).isRequired,
     onTopUpClick: PropTypes.func.isRequired,
-
-    lang: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -38,17 +37,14 @@ class TopUpMethodBlock extends Component {
   @bind
   onTopUpButtonClick() {
     const { method, onTopUpClick } = this.props;
-    onTopUpClick(method.id, this.state);
+    onTopUpClick(method.id, this.state.amount);
   }
 
   render() {
     const b = block('top-up-method-block');
     const { lang } = this.props;
     const { title, destinationPlaceholder, iconFileNames, requisitesType } = this.props.method;
-    let imgClass = 'img-row';
-    if (iconFileNames.length > 1) {
-      imgClass = 'two-image-row';
-    }
+    const imgClass = 'img-row';
     const imgList = iconFileNames.map((fName, index) => <img key={index} className={b(imgClass)} src={fName} />);
     const { amount, requisites } = this.state;
     return (
@@ -84,7 +80,7 @@ class TopUpMethodBlock extends Component {
               </div>
               <div className={b('buttons')}>
                 <Button onClick={this.onTopUpButtonClick} >
-                  {'Оплата'}
+                  Оплата
                 </Button>
               </div>
             </div>

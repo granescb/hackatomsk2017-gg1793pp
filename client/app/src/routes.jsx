@@ -6,6 +6,7 @@ function createRoutes(modules, store) {
   return (
     <Route path="/" component={App}>
       { modules.map(module => module.getRoutes ? module.getRoutes() : null) }
+      <IndexRedirect to="roulette" />
     </Route>
   );
 }

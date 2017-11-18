@@ -1,3 +1,2 @@
-import TopUpLayout from './TopUpLayout.jsx';
-export { TopUpLayout }
-
+import TopUpLayout from './TopUpLayout';
+export default TopUpLayout;

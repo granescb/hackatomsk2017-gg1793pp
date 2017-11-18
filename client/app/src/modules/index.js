@@ -1,1 +1,2 @@
-export PaymentModule from './PaymentModule/PaymentModule';
+export PaymentModule from './Payment/Payment';
+export RouletteModule from './Roulette/Roulette';

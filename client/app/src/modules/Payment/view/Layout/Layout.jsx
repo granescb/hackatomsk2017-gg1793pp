@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import block from 'bem-cn';
 
-import { TopUpLayout } from 'features/payment/';
+import { TopUpLayout } from 'features/payment';
 import './Layout.styl';
 
 class PaymentLayout extends Component {

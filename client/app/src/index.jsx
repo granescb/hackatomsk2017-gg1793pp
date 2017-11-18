@@ -6,7 +6,7 @@ import { Router, browserHistory, hashHistory } from 'react-router';
 import createRoutes from './routes';
 import configureStore, { createReducer } from './configureStore';
 import Api from './shared/api/Api';
-import { PaymentModule } from './modules';
+import { RouletteModule, PaymentModule } from './modules';
 import './App.styl';
 
 let history = hashHistory;
@@ -21,6 +21,7 @@ if (process.env.NODE_ENV == 'production') api = new Api('');
 
 const modules = [
   new PaymentModule(),
+  new RouletteModule(),
 ];
 const store = configureStore(modules, { api });
 const routes = createRoutes(modules, store);
