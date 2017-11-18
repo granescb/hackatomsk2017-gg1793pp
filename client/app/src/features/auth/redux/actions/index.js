@@ -7,6 +7,7 @@ const actionTypes = {
 
 function signIn(email, password) {
   return async (dispatch, getState, extra) => {
+    const { api } = extra;
     console.log(email, password);
   };
 }
