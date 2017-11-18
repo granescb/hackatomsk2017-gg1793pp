@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory, hashHistory } from 'react-router';
 import createRoutes from './routes';
 import configureStore, { createReducer } from './configureStore';
+import Api from './shared/api/Api';
 import './App.styl';
 
 let history = hashHistory;
@@ -13,9 +14,13 @@ if (process.env.ENV === 'browser') {
   history = browserHistory;
 }
 
+let api = new Api('http://localhost:8000');
+
+if (process.env.NODE_ENV == 'production') api = new Api('');
+
 const modules = [
 ];
-const store = configureStore(modules);
+const store = configureStore(modules, { api });
 const routes = createRoutes(modules, store);
 const rootComponent = (
   <Provider store={store}>
