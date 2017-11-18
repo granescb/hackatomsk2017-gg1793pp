@@ -6,7 +6,7 @@ import Layout from './view/Layout/Layout';
 
 class PaymentLayout {
   getRoutes() {
-    return <Route key="top-app" path="top-app" component={Layout} />;
+    return <Route key="top-up" path="top-up" component={Layout} />;
   }
 }
 

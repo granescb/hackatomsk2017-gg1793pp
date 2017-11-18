@@ -7,6 +7,7 @@ import { bind } from 'decko';
 import { actions as authActions } from 'features/auth/redux';
 
 import Header from 'shared/view/components/Header';
+import Rooms from 'features/rooms';
 import Footer from 'shared/view/components/Footer';
 import './AppComponent.styl';
 
@@ -39,7 +40,7 @@ class AppComponent extends Component {
         <Header />
         <div className={b('content')}>
           <div className={b('content', { position: 'left-block' })}>
-            Комнаты
+            <Rooms />
           </div>
           <div className={b('content', { position: 'center-block' })} >
             <div className={b('center-content-wrapper')}>

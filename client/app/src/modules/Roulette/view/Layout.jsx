@@ -3,20 +3,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import block from 'bem-cn';
 
-import Roulette from 'features/roulette';
+import RouletteWrapper from 'modules/shared/RouletteWrapper';
 import './Layout.styl';
 
 class Layout extends Component {
-  static propTypes = {
-
-    addNotification: PropTypes.func.isRequired,
-  };
 
   render() {
     const b = block('roulette-page');
     return (
       <div className={b()}>
-        <Roulette />
+        <RouletteWrapper />
       </div>
     );
   }
