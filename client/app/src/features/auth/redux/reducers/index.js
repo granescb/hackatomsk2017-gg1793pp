@@ -30,12 +30,26 @@ function reducer(state = initialState, action) {
           .setIn(['userName'], action.payload.login)
           .setIn(['actionSuccess'], true)
           .toJS();
+
+    case actionTypes.SIGN_UP_SUCCESS:
+      return imState
+          .setIn(['actionProcessing'], false)
+          .setIn(['errorMessage'], null)
+          .setIn(['isAuthenticated'], true)
+          .setIn(['balance'], action.payload.balance)
+          .setIn(['userName'], action.payload.login)
+          .setIn(['actionSuccess'], true)
+          .toJS();
     
     case actionTypes.GET_USER_BALANCE:
       return imState
           .setIn(['balance'], action.payload)
           .toJS();
-
+    case actionTypes.SELECT_AUTH_MODAL_TAB:
+      return imState
+        .setIn(['activeAuthModalTab'], action.payload)
+        .toJS();
+    
     default: 
       return imState.toJS();
   }

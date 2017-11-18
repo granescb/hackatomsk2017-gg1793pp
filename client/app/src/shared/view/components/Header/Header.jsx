@@ -3,7 +3,7 @@ import block from 'bem-cn';
 import { Link } from 'react-router';
 import SVGInline from 'react-svg-inline';
 
-import AuthBlock from 'features/auth';
+import AuthBlock from 'features/auth/authBlock';
 import logoImg from './img/logo.png';
 import avatarImg from './img/avatar.png'
 import './Header.styl';
