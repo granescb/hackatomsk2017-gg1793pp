@@ -11,14 +11,17 @@ var UserModel = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: 120
+        expires: '30d'
     },
     balance: {
         type: Number,
         default: 0
     },
-    currentRoom: ObjectIdSchema
+    currentRoom: ObjectIdSchema,
+    expireAt: { type: Date, default: undefined }
 });
+UserModel.index({ "expireAt": 1 }, { expireAfterSeconds: 5 });
+
 UserModel.methods.create = function (login, password) {
     var greeting = this.login
         ? "My name is " + this.login
