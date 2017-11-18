@@ -5,4 +5,5 @@
 в течении времени X игроки делают взносы в виде биткоинов(покупают билеты - фантики), </br>
 Больше купленых билетов, шанс выйгрыша выше. </br>
 Выйгрывает тот игрок, на чей билет указал рандом. </br>
-Дизайн - https://www.figma.com/file/FvBeJMAhGHQ5Xd4MAmWKMmGt/Untitled
+Дизайн - https://www.figma.com/file/FvBeJMAhGHQ5Xd4MAmWKMmGt/Untitled </br>
+Random - https://api.random.org/json-rpc/1/ </br>
