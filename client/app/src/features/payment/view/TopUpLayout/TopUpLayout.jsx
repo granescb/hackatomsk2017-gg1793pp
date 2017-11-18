@@ -27,7 +27,6 @@ class TopUpLayout extends Component {
   @bind
   onMethodTopUpClick(methodID, amount) {
     const { initBitapsPayment, initCandyWrapper } = this.props;
-    console.log(TopUpMethods.BITAPS.id);
     switch (methodID) {
       case TopUpMethods.BITAPS.id:
         initBitapsPayment(methodID, amount);

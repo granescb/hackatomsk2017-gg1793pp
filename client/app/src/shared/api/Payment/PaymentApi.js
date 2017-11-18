@@ -7,14 +7,14 @@ class PaymentApi extends BaseApi {
 
   constructor(baseUrl = '') {
     super(baseUrl);
-    this.baseUrl = `${baseUrl}/api/user`;
+    this.baseUrl = `${baseUrl}/api/payment`;
   }
 
   @bind
   initCandyWrapper(methodID, amount) {
     return this.sendQuery(
       this.queryTypes.POST,
-      `${this.baseUrl}/patment/init-candy-wrapper`,
+      `${this.baseUrl}/init-candy-wrapper`,
       {
         methodID : methodID,
         amount : amount,
@@ -22,10 +22,11 @@ class PaymentApi extends BaseApi {
     );
   }
 
-  initCandyWrapper(methodID, amount) {
+  @bind
+  initBitapsPayment(methodID, amount) {
     return this.sendQuery(
       this.queryTypes.POST,
-      `${this.baseUrl}/patment/init-candy-wrapper`,
+      `${this.baseUrl}/init-bitaps-payment`,
       {
         methodID : methodID,
         amount : amount,
