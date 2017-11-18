@@ -1,7 +1,7 @@
 .header
   display flex
   background-color #f6f6f6
-  height 8.3rem
+  height 6.3rem
   position relative
   background-color #000000
   &__user-wrapper
@@ -9,6 +9,12 @@
     width 100%
     display flex 
     flex-direction row
+    justify-content flex-end
+    argin-right 40px
+
+  &__logo-wrapper
+    margin-left: 40px;
+
   &__wrapper
     display inline-block
     margin auto
@@ -17,7 +23,7 @@
         width 50%
         display flex
         align-items center
-        justify-content flex-end
+        justify-content flex-start
         text-decoration none
       &_center
         position absolute
@@ -30,7 +36,7 @@
       &_right
         width 50%
         display flex
-        justify-content flex-start
+        justify-content flex-end
 
   &__img-container
     width 20px
@@ -41,12 +47,14 @@
     height 100%
   &__text
     color #fff
-    font-size 26px
+    font-size 18px
     margin-right 25%
     margin 0 25% 0 20px
   &__button
     color #FFE500
-    font-size 23px
+    font-size 18px
     text-decoration none
   &__user-avatar
     margin-left 50px
+    margin-right 40px
+    max-height 80px
