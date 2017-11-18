@@ -20,14 +20,14 @@ class RoomItem extends Component {
     const b = block('room-item');
     const { text, onClickItem, id, isActive, iconFileNames } = this.props;
     return (
-      <div onClick={() => onClickItem(id)} className={b({ isActive })}>
+      <Link to={'/roulette'} onClick={() => onClickItem(id)} className={b({ isActive })}>
         <div className={b('icon-wrapper')}>
           <img className={b('icon')} src={iconFileNames} />
         </div>
         <div className={b('text', { isActive })}>
           {text}
         </div>
-      </div>
+      </Link>
     );
   }
 }

@@ -36,7 +36,6 @@ class DuelLayout extends Component {
       <div className={b()}>
         <div className={b('start-panel')}>
           <div className={b('timer-container')}>
-            <Timer />
             <div className={b('button')}>
               <Button disabled={isOpenRoom} onClick={() => this.onClickStart()}>Старт</Button>
             </div>
@@ -45,12 +44,12 @@ class DuelLayout extends Component {
             { isOpenRoom ? <p>Время идет!Пора делать ставку</p> : <p>Старт и делаем ставки!</p> }
           </div>
         </div>
-      <div className={b('bet-panel')}>
-        <div className={b('bet-panel', { position: 'left' })}></div>
-        <div className={b('bet-panel', { position: 'right' })}>
-          <Bet />
+        <div className={b('bet-panel')}>
+          <div className={b('bet-panel', { position: 'left' })}></div>
+          <div className={b('bet-panel', { position: 'right' })}>
+            <Bet />
+          </div>
         </div>
-      </div>
       </div>
     );
   }
