@@ -9,6 +9,7 @@ import persistState from 'redux-localstorage';
 
 import * as authFeature from './features/auth';
 import * as roomsFeature from './features/rooms';
+import * as paymentFeature from './features/payment';
 
 function configureStore(modules, extra) {
   const middlewares = [
@@ -44,6 +45,7 @@ function createReducer(modules) {
   return combineReducers({
     auth: authFeature.reducer,
     rooms: roomsFeature.reducer,
+    payment: paymentFeature.reducer,
     ...modulesReducers,
   });
 }

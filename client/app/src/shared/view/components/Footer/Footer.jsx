@@ -8,9 +8,6 @@ import vk from 'shared/view/components/Footer/img/vk_footer.svg';
 import './Footer.styl';
 
 class Footer extends Component {
-  static propTypes = {
-    lang: PropTypes.string.isRequired,
-  }
 
   render() {
     const b = block('footer');
