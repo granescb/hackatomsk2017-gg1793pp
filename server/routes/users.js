@@ -24,7 +24,7 @@ router.post('/signup', function(req, res, next) {
     });
     res.send('Ok');
 });
-
+// this testing function
 router.get('/list', function(req, res, next) {
     UserModel.find({}, function (err, person) {
      if (err) return handleError(err);
@@ -47,7 +47,7 @@ router.post('/login', function (req, res, next) {
                 req.session.authorized = true;
                 req.session.username = person.login;
                 req.cookies.user = person.login;
-                console.log(person.login + (' Login!'));
+                console.log(person.login + (' is Login!'));
                 response = myResponse(0, {'login': person.login,
                     'balance': person.balance}, '');
                 res.send(response)
