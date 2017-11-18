@@ -7,7 +7,7 @@ import {
 import thunk from 'redux-thunk';
 import persistState from 'redux-localstorage';
 
-import { reducer as appReducer } from './modules/App';
+import * as authFeature from './features/auth';
 
 function configureStore(modules, extra) {
   const middlewares = [
@@ -41,7 +41,7 @@ function createReducer(modules) {
       {},
   );
   return combineReducers({
-    app: appReducer,
+    auth: authFeature.reducer,
     ...modulesReducers,
   });
 }
