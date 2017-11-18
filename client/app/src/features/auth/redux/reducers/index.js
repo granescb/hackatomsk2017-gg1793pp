@@ -26,7 +26,14 @@ function reducer(state = initialState, action) {
           .setIn(['actionProcessing'], false)
           .setIn(['errorMessage'], null)
           .setIn(['isAuthenticated'], true)
+          .setIn(['balance'], action.payload.balance)
+          .setIn(['userName'], action.payload.login)
           .setIn(['actionSuccess'], true)
+          .toJS();
+    
+    case actionTypes.GET_USER_BALANCE:
+      return imState
+          .setIn(['balance'], action.payload)
           .toJS();
 
     default: 

@@ -20,6 +20,14 @@ class AuthApi extends BaseApi {
         password: password },
     );
   }
+
+  @bind
+  getUserBalance() {
+    return this.sendQuery(
+      this.queryTypes.GET,
+      `${this.baseUrl}/balance`,
+    );
+  }
 }
 
 export default AuthApi;
