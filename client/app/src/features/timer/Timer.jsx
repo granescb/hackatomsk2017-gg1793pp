@@ -3,25 +3,18 @@ import block from 'bem-cn';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { actions } from 'features/roulette/redux';
+import { actions as timerActions } from 'features/timer/redux';
 
 import TimerBlock from './TimerBlock';
 import './Timer.styl';
 
 class Timer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      time: 30,
-    };
-  }
+
   render() {
     const b = block('timer');
-    const { time } = this.state;
     return (
       <div className={b}>
-        <TimerBlock time={time} />
-        <button onClick={this.setState({ time: 30 })}>Клик</button>
+       timer
       </div>
     );
   }
@@ -33,6 +26,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+  const actions = {
+    startTimer: timerActions.startTimer,
+  };
   return bindActionCreators(actions, dispatch);
 }
 

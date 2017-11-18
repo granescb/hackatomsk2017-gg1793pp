@@ -3,8 +3,7 @@ import Timer from 'react.timer';
 
 
 function TimerBlock(props) {
-  const { time } = props;
-  return <Timer countDown startTime={time} />;
+  return <Timer countDown startTime={30} />;
 }
 
 TimerBlock.propTypes = {

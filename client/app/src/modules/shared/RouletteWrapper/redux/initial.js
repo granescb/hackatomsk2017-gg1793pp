@@ -1,5 +1,8 @@
+
+
 const initialState = {
-  testData: '',
+  actionProcessing: false,
+  actionSuccess: false,
 };
 
 export default initialState;

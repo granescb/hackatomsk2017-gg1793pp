@@ -10,6 +10,8 @@ import persistState from 'redux-localstorage';
 import * as authFeature from './features/auth';
 import * as roomsFeature from './features/rooms';
 import * as paymentFeature from './features/payment';
+import * as timerFeature from './features/timer';
+import * as rouleteFeature from './modules/shared/RouletteWrapper';
 
 function configureStore(modules, extra) {
   const middlewares = [
@@ -46,6 +48,8 @@ function createReducer(modules) {
     auth: authFeature.reducer,
     rooms: roomsFeature.reducer,
     payment: paymentFeature.reducer,
+    timer: timerFeature.reducer,
+    roulette: rouleteFeature.reducer,
     ...modulesReducers,
   });
 }
