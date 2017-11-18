@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import block from 'bem-cn';
 
 import './RoomItem.styl';
@@ -17,9 +18,9 @@ class RoomItem extends Component {
     const b = block('room-item');
     const { text, onClickItem, id, isActive } = this.props;
     return (
-      <div className={b}>
+      <Link to={'/roulette'} className={b}>
         <div onClick={() => onClickItem(id)} className={b('text', { isActive })}>{text}</div>
-      </div>
+      </Link>
     );
   }
 }

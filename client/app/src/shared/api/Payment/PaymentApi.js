@@ -7,17 +7,16 @@ class PaymentApi extends BaseApi {
 
   constructor(baseUrl = '') {
     super(baseUrl);
-    this.baseUrl = `${baseUrl}/api/payment`;
+    this.baseUrl = `${baseUrl}/api/user`;
   }
 
   @bind
   initCandyWrapper(methodID, amount) {
     return this.sendQuery(
       this.queryTypes.POST,
-      `${this.baseUrl}/init-candy-wrapper`,
+      `${this.baseUrl}/topup/fantic`,
       {
-        methodID : methodID,
-        amount : amount,
+        amount,
       },
     );
   }
@@ -28,8 +27,8 @@ class PaymentApi extends BaseApi {
       this.queryTypes.POST,
       `${this.baseUrl}/init-bitaps-payment`,
       {
-        methodID : methodID,
-        amount : amount,
+        methodID,
+        amount,
       },
     );
   }
