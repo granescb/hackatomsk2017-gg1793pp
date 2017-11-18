@@ -5,7 +5,7 @@ function BalanceBlock(props) {
   const { balance, className } = props;
   return (
     <div className={className}>
-      { `${balance} фантик` }
+      { `Баланс: ${balance} фантик` }
     </div>
   );
 }
