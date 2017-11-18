@@ -40,11 +40,11 @@ class App extends Component {
     const b = block('app');
     const bLoginTab = block('auth-modal');
     const { isUserAuthenticated, signIn, authProcessing } = this.props;
-    debugger
     return (
       <div className={b}>
         { 
-            isUserAuthenticated
+            // isUserAuthenticated
+            true
             ?
               <AppComponent>
                 {this.props.children}
