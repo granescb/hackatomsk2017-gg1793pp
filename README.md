@@ -6,7 +6,7 @@ hackatomsk2017-gg1793pp </br>
 В течении времени X игроки делают взносы в виде биткоинов(покупают билеты - фантики), </br>
 Больше купленых билетов, шанс выйгрыша выше. </br>
 Выйгрывает тот игрок, на чей билет указал рандом. </br>
-# Дизайн </br>
+# Дизайн </p>
 Ссылка - https://www.figma.com/file/FvBeJMAhGHQ5Xd4MAmWKMmGt/Untitled </br>
-# Random </br>
+# Random </p>
 Ссылка - https://api.random.org/json-rpc/1/ </br>
