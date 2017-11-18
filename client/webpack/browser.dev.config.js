@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
- 
+console.log(__dirname);
 module.exports = {
   context: path.resolve(__dirname, '..', 'app'),
   entry: './src/index.jsx',
@@ -76,7 +76,7 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx', '.css'],
   },
   devServer: {
-    contentBase: path.resolve(__dirname, '..', 'app', 'web'),
+    contentBase: path.resolve(__dirname, '..', 'app'),
     inline: true,
     port: 8000,
     historyApiFallback: true,

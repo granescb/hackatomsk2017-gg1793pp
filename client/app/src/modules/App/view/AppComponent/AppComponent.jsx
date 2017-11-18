@@ -6,6 +6,8 @@ import { bind } from 'decko';
 
 import { actions as authActions } from 'features/auth/redux';
 
+import Header from 'shared/view/components/Header';
+import Footer from 'shared/view/components/Footer';
 import './AppComponent.styl';
 
 class AppComponent extends Component {
@@ -15,6 +17,10 @@ class AppComponent extends Component {
       isOpenMenu: false,
       authExtraParams: {},
     };
+  }
+
+  static propTypes = {
+    children: PropTypes.element.isRequired,
   }
 
   static contextTypes = {
@@ -27,9 +33,24 @@ class AppComponent extends Component {
 
   render() {
     const b = block('app-component');
+    const { children } = this.props;
     return (
       <div className={b}>
-        appComponent
+        <Header />
+        <div className={b('content')}>
+          <div className={b('content', { position: 'left-block' })}>
+            Комнаты
+          </div>
+          <div className={b('content', { position: 'center-block' })} >
+            <div className={b('center-content-wrapper')}>
+              {children}
+            </div>
+          </div>
+          <div className={b('content', { position: 'right-block' })} >
+            линия событий
+          </div>
+          <Footer />
+        </div>
       </div>
     );
   }
