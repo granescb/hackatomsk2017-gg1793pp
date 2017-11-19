@@ -51,6 +51,9 @@ class TopUpLayout extends Component {
 
     return (
       <div className={b}>
+        <div className={b('caption')}>
+          Пополнение счета
+        </div>
         {methodBlocksList}
       </div>
     );

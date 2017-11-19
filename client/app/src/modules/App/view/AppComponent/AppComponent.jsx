@@ -50,7 +50,6 @@ class AppComponent extends Component {
           <div className={b('content', { position: 'right-block' })} >
             линия событий
           </div>
-          <Footer />
         </div>
       </div>
     );
