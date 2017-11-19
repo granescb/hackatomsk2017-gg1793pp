@@ -21,6 +21,7 @@ class Bet extends Component {
 
   static propTypes = {
     makeBet: PropTypes.func.isRequired,
+    isOpenRoom: PropTypes.bool.isRequired,
 
     userBalance: PropTypes.number.isRequired,
   }
@@ -28,6 +29,8 @@ class Bet extends Component {
   @bind
   handleMakeBetClick() {
     this.props.makeBet(this.state.amount);
+    this.setState({ amount: null });
+    alert('Успешное вложение');
   }
 
   @bind
@@ -41,8 +44,8 @@ class Bet extends Component {
   @bind
   checkMakeBet() {
     const { amount } = this.state;
-    const { userBalance } = this.props;
-    const flag = userBalance < amount;
+    const { userBalance, isOpenRoom } = this.props;
+    const flag = (userBalance < amount) || !isOpenRoom;
     return flag;
   }
 
@@ -55,7 +58,7 @@ class Bet extends Component {
           <Input 
             type="text"
             name="amount"
-            placeholder="Пароль"
+            placeholder="Сумма"
             value={amount}
             onChange={this.onInputChange} 
           />
@@ -75,6 +78,7 @@ class Bet extends Component {
 function mapStateToProps(state) {
   return {
     userBalance: state.auth.balance,
+    isOpenRoom: state.roulette.isOpenRoom,
   };
 }
 

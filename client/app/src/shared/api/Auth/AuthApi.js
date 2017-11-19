@@ -25,7 +25,7 @@ class AuthApi extends BaseApi {
   signUp(email, password) {
     return this.sendQuery(
       this.queryTypes.POST,
-      `${this.baseUrl}/login`,
+      `${this.baseUrl}/signup`,
       {
         login: email,
         password, 
@@ -38,6 +38,14 @@ class AuthApi extends BaseApi {
     return this.sendQuery(
       this.queryTypes.GET,
       `${this.baseUrl}/balance`,
+    );
+  }
+  
+  @bind
+  signOut() {
+    return this.sendQuery(
+      this.queryTypes.GET,
+      `${this.baseUrl}/logout`,
     );
   }
 }

@@ -5,6 +5,7 @@ const actionTypes = {
   SIGN_UP_SUCCESS: 'haka/auth/SIGN_UP_SUCCESS',
   GET_USER_BALANCE: 'haka/auth/GET_USER_BALANCE',
   SELECT_AUTH_MODAL_TAB: 'haka/auth/SELECT_AUTH_MODAL_TAB',
+  SIGN_OUT: 'haka/auth/SIGN_OUT',
 };
 
 function signIn(email, password) {
@@ -40,6 +41,15 @@ function getUserBalance() {
   };
 }
 
+function logout() {
+  return async (dispatch, getState, extra) => {
+    dispatch({ type: actionTypes.SIGN_OUT });
+    const { api } = extra;
+    api.auth.signOut();
+    localStorage.clear();
+  };
+}
+
 function selectAuthModalTab(tab) {
   return { type: actionTypes.SELECT_AUTH_MODAL_TAB, payload: tab };
 }
@@ -51,4 +61,5 @@ export {
   signUp,
   getUserBalance,
   selectAuthModalTab,
+  logout,
 };

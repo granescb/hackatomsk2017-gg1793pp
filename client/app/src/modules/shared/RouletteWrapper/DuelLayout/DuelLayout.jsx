@@ -9,6 +9,7 @@ import { actions as rouletteActions } from 'modules/shared/RouletteWrapper';
 
 import Timer from 'features/timer';
 import Bet from 'features/bet';
+import ListUsers from 'features/listUsers';
 import Button from 'shared/view/components/Button';
 import './DuelLayout.styl';
 
@@ -45,7 +46,9 @@ class DuelLayout extends Component {
           </div>
         </div>
         <div className={b('bet-panel')}>
-          <div className={b('bet-panel', { position: 'left' })}></div>
+          <div className={b('bet-panel', { position: 'left' })}>
+            <ListUsers />
+          </div>
           <div className={b('bet-panel', { position: 'right' })}>
             <Bet />
           </div>

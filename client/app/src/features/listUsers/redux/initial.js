@@ -1,11 +1,7 @@
-
-
 const initialState = {
   actionProcessing: false,
   actionSuccess: false,
-  isOpenRoom: false,
-  userBets: [],
-  userList: [],
+  users: [],
 };
 
 export default initialState;
