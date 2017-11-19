@@ -17,16 +17,17 @@ hackatomsk2017-gg1793pp </br>
 <H3>Стек технологий</H3> 
  <p>Клиент:</p>
  <ul>
-  <li>1) React + Redux + immutable js</li>
-  <li>2) сборщик webpack 2</li>
-  <li>3) stylus</li>
-  <li>4) bem-cm</li>
-  <li>5) es-6</li>
-  <li>6) react router для SPA</li>
+  <li>React + Redux + immutable js</li>
+  <li>сборщик webpack 2</li>
+  <li>stylus</li>
+  <li>bem-cm</li>
+  <li>es-6</li>
+  <li>react router для SPA</li><br>
 
- Сервер: 
-  1) Node.js 
-  2) BD - MongoDB + Mongoose
-  3) Express js
-  4) Для генерации случайно величины используется онлайн сервис Random.org
+ <p>Сервер:</p> 
+  <ul>
+ <li>Node.js</li> 
+ <li>BD - MongoDB + Mongoose</li>
+ <li>Express js</li>
+ <li>Для генерации случайно величины используется онлайн сервис Random.org</li>
 
