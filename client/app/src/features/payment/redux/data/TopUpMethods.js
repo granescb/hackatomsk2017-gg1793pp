@@ -1,5 +1,5 @@
 import bitapsIcon from '../../view/icons/topUp/bitcoin_PNG47.png';
-import funtik from '../../view/icons/topUp/funtik.png';
+import funtik from '../../view/icons/topUp/image.png';
 const RequisitesTypes = {
   PHONE: 'phone',
   TEXT: 'text',
@@ -7,14 +7,14 @@ const RequisitesTypes = {
 };
   
 const TopUpMethods = {
-  BITAPS: {
-    id: 0,
-    title: 'Bitaps',
-    destinationPlaceholder: 'Bitaps',
-    iconFileNames: [bitapsIcon],
-    isPaySystem: true,
-    requisitesType: RequisitesTypes.NONE,
-  },
+  // BITAPS: {
+  //   id: 0,
+  //   title: 'Bitaps',
+  //   destinationPlaceholder: 'Bitaps',
+  //   iconFileNames: [bitapsIcon],
+  //   isPaySystem: true,
+  //   requisitesType: RequisitesTypes.NONE,
+  // },
 
   CANDYWRAPPERS: {
     id: 1,

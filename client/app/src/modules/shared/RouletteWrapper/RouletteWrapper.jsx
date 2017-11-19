@@ -21,10 +21,10 @@ class RouletteWrapper extends Component {
         layout = <DuelLayout />;
         break;
       case typeRoom.fastPlay.id:
-        layout = <div>null</div>;
+        layout = <div className={b('empty-game-error')}>В демо версии данная игра недоступна</div>;
         break;
       case typeRoom.classicPlay.id:
-        layout = <div>null</div>;
+        layout = <div className={b('empty-game-error')}>В демо версии данная игра недоступна</div>;
         break;
       default:
         layout = <DuelLayout />;
