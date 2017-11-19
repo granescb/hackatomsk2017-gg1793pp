@@ -25,7 +25,8 @@ class ListUsers extends Component {
     let layout = null;
     if (users.length > 0) {
       layout = users.map((user) => {
-        return <UserItem />;
+        const name = Object.keys(user).map((key) => { return user[key]; });
+        return <UserItem userName={name} />;
       });
     }
     return (

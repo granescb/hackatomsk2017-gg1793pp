@@ -78,7 +78,7 @@ function getAndCalcRooms() {
     }, 2000)
 
 }
-// getAndCalcRooms();
+getAndCalcRooms();
 // test init room
 // var room = new RoomModel({});
 // room.save(function (err, room) {

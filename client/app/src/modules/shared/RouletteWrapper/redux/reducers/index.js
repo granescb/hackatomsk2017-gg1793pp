@@ -35,7 +35,7 @@ function reducer(state = initialState, action) {
           .setIn(['errorMessage'], null)
           .setIn(['isOpenRoom'], action.payload.isActive)
           .setIn(['userBets'], action.payload.userBets)
-          .setIn(['userList'], action.payload.userBets)
+          .setIn(['userList'], action.payload.userList)
           .toJS();
     default: 
       return imState.toJS();
