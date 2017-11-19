@@ -20,7 +20,7 @@ function pullingStatusRoom() {
   return async (dispatch, getState, extra) => {
     const { api } = extra;
     const response = await api.roulette.pullingStatusRoom();
-    if (response.success) dispatch({ type: actionTypes.PULLING_STATUS_ROOM, payloaf: response.data });
+    if (response.success) dispatch({ type: actionTypes.PULLING_STATUS_ROOM, payload: response.data });
     else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
   };
 }

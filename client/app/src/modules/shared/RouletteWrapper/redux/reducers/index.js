@@ -28,6 +28,15 @@ function reducer(state = initialState, action) {
           .setIn(['errorMessage'], null)
           .setIn(['isOpenRoom'], true)
           .toJS();
+
+    case actionTypes.PULLING_STATUS_ROOM:
+      return imState
+          .setIn(['actionProcessing'], false)
+          .setIn(['errorMessage'], null)
+          .setIn(['isOpenRoom'], action.payload.isActive)
+          .setIn(['userBets'], action.payload.userBets)
+          .setIn(['userList'], action.payload.userBets)
+          .toJS();
     default: 
       return imState.toJS();
   }

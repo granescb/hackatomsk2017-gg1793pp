@@ -18,18 +18,10 @@ class ListUsers extends Component {
 
     users: PropTypes.array.isRequired,
   }
-  
-  componentWillReceiveProps(nextProps) {
-    const { isOpenRoom, getUsersRoom } = nextProps;
-    if (isOpenRoom && isOpenRoom !== this.props.isOpenRoom) {
-      getUsersRoom();
-    }
-  }
 
   render() {
     const b = block('list-users');
     const { users } = this.props;
-
     let layout = null;
     if (users.length > 0) {
       layout = users.map((user) => {
@@ -48,7 +40,7 @@ function mapStateToProps(state) {
   return {
     userBalance: state.auth.balance,
     isOpenRoom: state.roulette.isOpenRoom,
-    users: state.listUsers.users,
+    users: state.roulette.userList,
   };
 }
 

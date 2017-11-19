@@ -8,7 +8,6 @@ import { actions as authActions } from 'features/auth/redux';
 
 import Header from 'shared/view/components/Header';
 import Rooms from 'features/rooms';
-import Footer from 'shared/view/components/Footer';
 import './AppComponent.styl';
 
 class AppComponent extends Component {
