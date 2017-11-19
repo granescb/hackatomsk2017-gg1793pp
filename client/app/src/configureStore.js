@@ -12,6 +12,7 @@ import * as roomsFeature from './features/rooms';
 import * as paymentFeature from './features/payment';
 import * as timerFeature from './features/timer';
 import * as betFeature from './features/bet';
+import * as listUsersFeature from './features/listUsers';
 import * as rouleteFeature from './modules/shared/RouletteWrapper';
 
 function configureStore(modules, extra) {
@@ -52,6 +53,7 @@ function createReducer(modules) {
     timer: timerFeature.reducer,
     roulette: rouleteFeature.reducer,
     bet: betFeature.reducer,
+    listUsers: listUsersFeature.reducer,
     ...modulesReducers,
   });
 }

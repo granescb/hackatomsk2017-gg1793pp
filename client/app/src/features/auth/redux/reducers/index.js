@@ -40,6 +40,11 @@ function reducer(state = initialState, action) {
           .setIn(['userName'], action.payload.login)
           .setIn(['actionSuccess'], true)
           .toJS();
+    case actionTypes.SIGN_OUT:
+      return imState
+          .setIn(['isAuthenticated'], false)
+          .setIn(['errorMessage'], null)
+          .toJS();
     
     case actionTypes.GET_USER_BALANCE:
       return imState
