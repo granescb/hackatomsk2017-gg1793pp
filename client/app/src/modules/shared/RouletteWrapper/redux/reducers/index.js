@@ -12,6 +12,8 @@ function reducer(state = initialState, action) {
           .setIn(['actionProcessing'], true)
           .setIn(['errorMessage'], null)
           .setIn(['isOpenRoom'], false)
+          .setIn(['userWin'], null)
+
           .toJS();
 
     case actionTypes.ACTION_FAILURE:
@@ -36,6 +38,12 @@ function reducer(state = initialState, action) {
           .setIn(['isOpenRoom'], action.payload.isActive)
           .setIn(['userBets'], action.payload.userBets)
           .setIn(['userList'], action.payload.userList)
+          .toJS();
+    case actionTypes.PLAYER_WIN:
+      return imState
+          .setIn(['actionProcessing'], false)
+          .setIn(['errorMessage'], null)
+          .setIn(['userWin'], action.payload)
           .toJS();
     default: 
       return imState.toJS();

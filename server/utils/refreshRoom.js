@@ -7,7 +7,7 @@ var RandomOrg = require('random');
 function refreshRoom(rooms) {
     for (var room of rooms){
         var timeExit = room.dateStarting;
-        timeExit.setSeconds(timeExit.getSeconds() + 10);
+        timeExit.setSeconds(timeExit.getSeconds() + room.secondLife);
         var currTime = new Date();
         if (timeExit < currTime){
             var totalSumm = 0;

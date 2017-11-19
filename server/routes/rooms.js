@@ -83,6 +83,8 @@ router.get('/list', function(req, res, next) {
                                             person.currentRoom = null;
                                             saveObj(person)
                                         }
+                                        room.isNotPushed= false;
+                                        saveObj(room)
                                     });
                                 }
                                 response = myResponse(0,room,'');

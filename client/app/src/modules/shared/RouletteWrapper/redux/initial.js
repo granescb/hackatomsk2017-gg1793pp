@@ -6,6 +6,7 @@ const initialState = {
   isOpenRoom: false,
   userBets: [],
   userList: [],
+  userWin: null,
 };
 
 export default initialState;
