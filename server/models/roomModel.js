@@ -22,6 +22,10 @@ var RoomModel = new Schema({
         type: Boolean,
         default: true
     },
+    isNotPushed: {
+      type: Boolean,
+      default: true
+    },
     dateStarting: {
         type: Date,
         default: Date.now

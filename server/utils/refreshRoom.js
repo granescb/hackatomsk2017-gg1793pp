@@ -29,7 +29,7 @@ function refreshRoom(rooms) {
                 UserModel.findOne({'login':item.userLogin}, function (err, user) {
                     if (err) {response = myResponse(1,{},err)}
                     else if(user){
-                        user.currentRoom = undefined;
+                        // user.currentRoom = null;
                         if (user.login == room.winLogin){
                             user.balance += totalSumm*0.95
                         }
