@@ -53,6 +53,35 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get('/list', function(req, res, next) {
+    // UserModel.findOne({'login': req.session.username}, function (err, person) {
+    //     if (err) res.send(myResponse(1,{},err));
+    //     else if (person){
+    //         RoomModel.findOne({'id': person.currentRoom}, function (err, room) {
+    //             if (err) res.send(myResponse(1,{},err));
+    //             else if (room){
+    //                 response = myResponse(0,room,'');
+    //                 res.send(response);
+    //             }
+    //         })
+    //     }
+    // });
+    RoomModel.find({'isActive': true}, function (error, rooms) {
+        if (error) res.send(myResponse(1,{},error));
+        else if (rooms.length){
+            for (var room of rooms){
+                room.userBets.forEach(function (item) {
+                    if (req.session.username == item.userLogin){
+                        response = myResponse(0,room,'');
+                        res.send(response);
+                        return
+                    }
+                })
+            }
+        }
+    });
+});
+
 router.get('/user/add', function(req, res, next) {
   UserModel.findOne({'login': req.session.username}, function (err, person) {
     if (err) res.send(myResponse(1,{},err));
@@ -85,6 +114,8 @@ router.get('/user/add', function(req, res, next) {
     else res.send(myResponse(1,{},'Not person'))
   });
 });
+
+
 
 router.post('/place', function(req, res, next) {
   UserModel.findOne({'login': req.session.username}, function (err, person) {
