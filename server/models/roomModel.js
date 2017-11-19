@@ -33,7 +33,7 @@ var RoomModel = new Schema({
     winLogin: String,
     secondLife: {
         type: Number,
-        default: 60
+        default: 10
     },
     userBets: {
         type: Array,
