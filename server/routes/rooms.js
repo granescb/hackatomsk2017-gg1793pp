@@ -66,12 +66,22 @@ router.get('/list', function(req, res, next) {
     //         })
     //     }
     // });
-    RoomModel.find({'isActive': true}, function (error, rooms) {
-        if (error) res.send(myResponse(1,{},error));
+    RoomModel.find({'isNotPushed': true}, function (err, rooms) {
+        if (err) res.send(myResponse(1,{},err));
         else if (rooms.length){
             for (var room of rooms){
                 room.userBets.forEach(function (item) {
                     if (req.session.username == item.userLogin){
+                        if (!room.isActive){
+                            UserModel.findOne({'login': item.userLogin}, function (err, person) {
+                                if (err) console.log('error '+err);
+                                else if(person){
+                                    person.currentRoom = null;
+                                    saveObj(person)
+                                }
+                            });
+
+                        }
                         response = myResponse(0,room,'');
                         res.send(response);
                         return
