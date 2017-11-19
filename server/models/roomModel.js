@@ -26,6 +26,11 @@ var RoomModel = new Schema({
         type: Date,
         default: Date.now
     },
+    winLogin: String,
+    secondLife: {
+        type: Number,
+        default: 60
+    },
     userBets: {
         type: Array,
         default : []

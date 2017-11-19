@@ -12,6 +12,7 @@ var RoomModel = require('./models/roomModel');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var rooms = require('./routes/rooms');
+var refreshRoom = require('./utils/refreshRoom');
 
 var app = express();
 
@@ -67,8 +68,19 @@ var newUser =  new UserModel({login: 'test',
           newUser.speak();
       }
     });
+
+function getAndCalcRooms() {
+    setInterval(function () {
+        RoomModel.find({'isActive': true}, function (err, rooms) {
+            console.log('in current tim active rooms count = '+rooms.length);
+            refreshRoom(rooms);
+         });
+    }, 2000)
+
+}
+// getAndCalcRooms();
 // test init room
-var room = new RoomModel({});
+// var room = new RoomModel({});
 // room.save(function (err, room) {
 //   if (err){
 //       if (room){
@@ -79,7 +91,6 @@ var room = new RoomModel({});
 //       }
 //   }
 // });
-
 app.listen(8000, function () {
   console.log('Example app listening on port 8000!');
 });
