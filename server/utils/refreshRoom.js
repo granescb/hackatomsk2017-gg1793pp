@@ -28,7 +28,7 @@ function refreshRoom(rooms) {
                     room.isActive = false;
                     saveObj(room);
                 }
-                else {
+                else if(room.isActive){
                     room.winLogin = room.userBets[winNumber].userLogin;
                     room.isActive = false;
                     room.userBets.forEach(function(item){
