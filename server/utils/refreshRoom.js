@@ -2,6 +2,7 @@ var express = require('express');
 var UserModel = require('../models/userModel');
 var RoomModel = require('../models/roomModel');
 var db = require('../model');
+var RandomOrg = require('random-org');
 
 function refreshRoom(rooms) {
     for (var room of rooms){
@@ -9,13 +10,13 @@ function refreshRoom(rooms) {
         timeExit.setSeconds(timeExit.getSeconds() + 10);
         var currTime = new Date();
         if (timeExit < currTime){
-            var random = generateRandom();
             var totalSumm = 0;
             var userCount = [];
             room.userBets.forEach(function(item){
                 totalSumm += item.amount;
                 userCount.push(totalSumm);
             });
+            var random = generateRandom(totalSumm);
             var winCount = totalSumm*random;
             for (var i = 0; i < userCount.length; i++){
                 if (userCount[i] > winCount) {
@@ -43,10 +44,15 @@ function refreshRoom(rooms) {
     }
 }
 
-function generateRandom() {
+function generateRandom(max) {
     //TODO
     // Необходимо дописать апи по подключению удаленного рандома
-    return Math.random()
+    var random = Math.random();
+    random = new RandomOrg({apiKey: ''});
+    random.generateIntegers({min: 0, max: max, n: 1}, function (result) {
+        console.log(result)
+    });
+    return random
 }
 
 function saveObj(ogj) {
