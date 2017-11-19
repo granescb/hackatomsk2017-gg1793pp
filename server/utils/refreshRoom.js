@@ -2,6 +2,7 @@ var express = require('express');
 var UserModel = require('../models/userModel');
 var RoomModel = require('../models/roomModel');
 var db = require('../model');
+var RandomOrg = require('random');
 
 function refreshRoom(rooms) {
     for (var room of rooms){
@@ -9,36 +10,40 @@ function refreshRoom(rooms) {
         timeExit.setSeconds(timeExit.getSeconds() + 10);
         var currTime = new Date();
         if (timeExit < currTime){
-            var random = generateRandom();
             var totalSumm = 0;
             var userCount = [];
             room.userBets.forEach(function(item){
                 totalSumm += item.amount;
                 userCount.push(totalSumm);
             });
-            var winCount = totalSumm*random;
-            for (var i = 0; i < userCount.length; i++){
-                if (userCount[i] > winCount) {
-                   var winNumber = i;
-                   break;
-                }
-            }
-            room.winLogin = room.userBets[winNumber].userLogin;
-            room.isActive = false;
-            room.userBets.forEach(function(item){
-                UserModel.findOne({'login':item.userLogin}, function (err, user) {
-                    if (err) {response = myResponse(1,{},err)}
-                    else if(user){
-                        // user.currentRoom = null;
-                        if (user.login == room.winLogin){
-                            user.balance += totalSumm*0.95
-                        }
-                        saveObj(user)
+            RandomOrg.generateIntegers(function (result) {
+                var winCount = result[0][0];
+                for (var i = 0; i < userCount.length; i++){
+                    if (userCount[i] > winCount) {
+                       var winNumber = i;
+                       break;
                     }
-                    else console.log('WoW!!! User not found for pay WIN! '+ item.userLogin)
+                }
+                room.winLogin = room.userBets[winNumber].userLogin;
+                room.isActive = false;
+                room.userBets.forEach(function(item){
+                    UserModel.findOne({'login':item.userLogin}, function (err, user) {
+                        if (err) {response = myResponse(1,{},err)}
+                        else if(user){
+                            // user.currentRoom = null;
+                            if (user.login == room.winLogin){
+                                user.balance += totalSumm*0.95
+                            }
+                            saveObj(user)
+                        }
+                        else console.log('WoW!!! User not found for pay WIN! '+ item.userLogin)
+                    });
                 });
+                saveObj(room)
+            }, {
+               min: 0, max: totalSumm, secure: true
             });
-            saveObj(room)
+
         }
     }
 }
@@ -46,7 +51,8 @@ function refreshRoom(rooms) {
 function generateRandom() {
     //TODO
     // Необходимо дописать апи по подключению удаленного рандома
-    return Math.random()
+    var random = Math.random();
+    return random
 }
 
 function saveObj(ogj) {

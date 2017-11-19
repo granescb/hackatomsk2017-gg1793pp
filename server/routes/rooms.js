@@ -80,7 +80,6 @@ router.get('/list', function(req, res, next) {
                                     saveObj(person)
                                 }
                             });
-
                         }
                         response = myResponse(0,room,'');
                         res.send(response);
