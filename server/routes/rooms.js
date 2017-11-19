@@ -70,7 +70,7 @@ router.get('/list', function(req, res, next) {
         if (err) res.send(myResponse(1,{},err));
         else if (rooms.length){
             for (var room of rooms){
-                room.userBets.forEach(function (item) {
+                room.userList.forEach(function (item) {
                     if (req.session.username == item.userLogin){
                         if (!room.isActive){
                             UserModel.findOne({'login': item.userLogin}, function (err, person) {
