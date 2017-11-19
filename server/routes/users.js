@@ -53,6 +53,7 @@ router.get('/list', function(req, res, next) {
      }
     });
 });
+
 router.post('/login', function (req, res, next) {
     UserModel.findOne({
         'login': req.body.login,
@@ -70,12 +71,13 @@ router.post('/login', function (req, res, next) {
                 res.send(response)
             }
             else {
-                res.send('User not found');
+                console.log('User not found');
             }
         }
     });
 });
-router.get('/signout', function (req, res, next) {
+
+router.get('/logout', function (req, res, next) {
     UserModel.findOne({
     }, function (err, person) {
         if (err) res.send(myResponse(1,{},err));
@@ -96,7 +98,7 @@ router.get('/signout', function (req, res, next) {
 
 router.get('/balance', function(req, res, next) {
     UserModel.findOne({'login': req.session.username}, function (err, person) {
-     if (err) return handleError(err);
+     if (err) res.send(myResponse(1,{},err));
      else if (person){
         console.log(person);
         response = myResponse(0, {'balance': person.balance}, '');
@@ -107,7 +109,7 @@ router.get('/balance', function(req, res, next) {
 
 router.post('/topup/fantic', function(req, res, next) {
     UserModel.findOne({'login': req.session.username}, function (err, person) {
-     if (err) return handleError(err);
+     if (err) res.send(myResponse(1,{},err));
      else if (person){
         console.log(person);
         person.balance += parseFloat(req.body.amount);

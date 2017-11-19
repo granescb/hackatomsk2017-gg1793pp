@@ -24,22 +24,28 @@ function refreshRoom(rooms) {
                        break;
                     }
                 }
-                room.winLogin = room.userBets[winNumber].userLogin;
-                room.isActive = false;
-                room.userBets.forEach(function(item){
-                    UserModel.findOne({'login':item.userLogin}, function (err, user) {
-                        if (err) {response = myResponse(1,{},err)}
-                        else if(user){
-                            // user.currentRoom = null;
-                            if (user.login == room.winLogin){
-                                user.balance += totalSumm*0.95
+                if (!room.userBets.length){
+                    room.isActive = false;
+                    saveObj(room);
+                }
+                else {
+                    room.winLogin = room.userBets[winNumber].userLogin;
+                    room.isActive = false;
+                    room.userBets.forEach(function(item){
+                        UserModel.findOne({'login':item.userLogin}, function (err, user) {
+                            if (err) {response = myResponse(1,{},err)}
+                            else if(user){
+                                // user.currentRoom = null;
+                                if (user.login == room.winLogin){
+                                    user.balance += totalSumm*0.95
+                                }
+                                saveObj(user)
                             }
-                            saveObj(user)
-                        }
-                        else console.log('WoW!!! User not found for pay WIN! '+ item.userLogin)
+                            else console.log('WoW!!! User not found for pay WIN! '+ item.userLogin)
+                        });
                     });
-                });
-                saveObj(room)
+                    saveObj(room)
+                }
             }, {
                min: 0, max: totalSumm, secure: true
             });
