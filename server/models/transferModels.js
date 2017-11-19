@@ -6,19 +6,12 @@ var mongoose = require('mongoose'),
 
 var TransferModel = new Schema({
     id: {type:ObjectIdSchema, default: function () { return new ObjectId()} },
-    amount: {type: String, unique: true},
-    fromUserId: ObjectIdSchema,
-    toUserId: ObjectIdSchema,
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now,
-    // },
-    balance: {
-        type: Number,
-        default: 0
-    },
-    currentRoom: ObjectIdSchema,
-    expireAt: { type: Date, default: undefined }
+    amount: String,
+    fromUserLogin: String,
+    status: {
+        type: Boolean,
+        default: false
+    }
 });
 
 module.exports = db.model('Transfer', TransferModel);
