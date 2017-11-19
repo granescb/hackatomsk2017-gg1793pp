@@ -8,6 +8,7 @@ import { actions as authActions } from 'features/auth/redux';
 
 import Header from 'shared/view/components/Header';
 import Rooms from 'features/rooms';
+import LineEvent from 'shared/view/components/LineEvent';
 import './AppComponent.styl';
 
 class AppComponent extends Component {
@@ -34,7 +35,7 @@ class AppComponent extends Component {
 
   render() {
     const b = block('app-component');
-    const { children, logout } = this.props;
+    const { children, logout, userList, userBets } = this.props;
     return (
       <div className={b}>
         <Header logout={logout} />
@@ -48,7 +49,10 @@ class AppComponent extends Component {
             </div>
           </div>
           <div className={b('content', { position: 'right-block' })} >
-            линия событий
+            <LineEvent 
+              userList={userList}
+              userBets={userBets}
+            />
           </div>
         </div>
       </div>
@@ -59,6 +63,8 @@ class AppComponent extends Component {
 
 function mapStateToProps(state) {
   return {
+    userList: state.roulette.userList,
+    userBets: state.roulette.userBets,
   };
 }
 
