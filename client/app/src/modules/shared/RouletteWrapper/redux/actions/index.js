@@ -23,7 +23,8 @@ function pullingStatusRoom() {
     const response = await api.roulette.pullingStatusRoom();
     if (response.success) {
       dispatch({ type: actionTypes.PULLING_STATUS_ROOM, payload: response.data });
-      if (response.data.isActive) {
+      if (!response.data.isActive) {
+        alert("Выиграл "+response.data.winLogin);
         dispatch({ type: actionTypes.PLAYER_WIN, payload: response.data });
       }
     } else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });

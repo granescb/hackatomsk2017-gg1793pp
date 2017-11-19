@@ -29,7 +29,6 @@ class Bet extends Component {
   @bind
   handleMakeBetClick() {
     this.props.makeBet(this.state.amount);
-    this.setState({ amount: null });
     alert('Успешное вложение');
   }
 

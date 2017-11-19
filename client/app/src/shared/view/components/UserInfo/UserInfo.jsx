@@ -23,7 +23,7 @@ class UserInfo extends React.Component {
         </div>
         <div className={b('wrapper', { position: 'center' })}>
           <div className={b('article')}>Ваш шанс</div>
-          <div>{chance ? chance + '%' : ''}</div>
+          <div>{chance ? chance.toFixed(1) + '%' : ''}</div>
         </div>
         <div className={b('wrapper', { position: 'right' })}>
           <div className={b('article')}>Общий банк</div>
