@@ -10,3 +10,6 @@ hackatomsk2017-gg1793pp </br>
 Ссылка - https://www.figma.com/file/FvBeJMAhGHQ5Xd4MAmWKMmGt/Untitled </br></p>
 <p> Random <br>
 Ссылка - https://api.random.org/json-rpc/1/ </br>
+
+<h3>Запуск</h3>
+Для запуска требуется перейти в папку <strong>client</strong> и папку <strong>server</strong> и установить npm модули(трубемая варсия node-7.8.0). Далее, для запуска фронта необходимо в папке <strong>client</strong> выполнить команду <strong>npm run browser:dev</strong>. После запуска фронт будет доступен по адресу http://localhost:8080. Для запуска бекенда требуется установленная база MongoDB( инструкция по установке https://www.digitalocean.com/community/tutorials/mongodb-ubuntu-16-04-ru). Запуск бекенда осуществляется командой <strong>node app.js</strong>.
