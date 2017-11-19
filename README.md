@@ -12,16 +12,17 @@ hackatomsk2017-gg1793pp </br>
 Ссылка - https://api.random.org/json-rpc/1/ </br>
 
 <h3>Запуск</h3>
-Для запуска требуется перейти в папку <strong>client</strong> и папку <strong>server</strong> и установить npm модули(трубемая варсия node-7.8.0). Далее, для запуска фронта необходимо в папке <strong>client</strong> выполнить команду <strong>npm run browser:dev</strong>. После запуска фронт будет доступен по адресу http://localhost:8080. Для запуска бекенда требуется установленная база MongoDB( инструкция по установке https://www.digitalocean.com/community/tutorials/mongodb-ubuntu-16-04-ru). Запуск бекенда осуществляется командой <strong>node app.js</strong>.
+Для запуска требуется перейти в папку <strong>client</strong> и папку <strong>server</strong> и установить npm модули(трубемая варсия node-7.8.0). Далее, для запуска фронта необходимо в папке <strong>client</strong> выполнить команду <strong>npm run browser:dev</strong>. После запуска фронт будет доступен по адресу http://localhost:8080. Для запуска бекенда требуется установленная база MongoDB( инструкция по установке https://www.digitalocean.com/community/tutorials/mongodb-ubuntu-16-04-ru). Запуск бекенда осуществляется командой <strong>node app.js</strong>.<br>
 
-Стек технологий 
- Клиент: 
-  1) React + Redux + immutable js
-  2) сборщик webpack 2
-  3) stylus
-  4) bem-cm
-  5) es-6
-  6) react router для SPA
+<H3>Стек технологий</H3> 
+ <p>Клиент:</p>
+ <ul>
+  <li>1) React + Redux + immutable js</li>
+  <li>2) сборщик webpack 2</li>
+  <li>3) stylus</li>
+  <li>4) bem-cm</li>
+  <li>5) es-6</li>
+  <li>6) react router для SPA</li>
 
  Сервер: 
   1) Node.js 
