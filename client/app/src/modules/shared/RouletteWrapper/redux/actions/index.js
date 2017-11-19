@@ -3,7 +3,8 @@ const actionTypes = {
   ACTION_FAILURE: 'haka/play/ACTION_FAILURE',
   ADD_USER_ROOM: 'haka/paly/ADD_USER_ROOM',
   PULLING_STATUS_ROOM: 'haka/paly/PULLING_STATUS_ROOM',
-  
+  PLAYER_WIN: 'haka/paly/PLAYER_WIN',
+
 };
 
 function addUserRoom() {
@@ -20,8 +21,12 @@ function pullingStatusRoom() {
   return async (dispatch, getState, extra) => {
     const { api } = extra;
     const response = await api.roulette.pullingStatusRoom();
-    if (response.success) dispatch({ type: actionTypes.PULLING_STATUS_ROOM, payload: response.data });
-    else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
+    if (response.success){
+      dispatch({ type: actionTypes.PULLING_STATUS_ROOM, payload: response.data });
+      if (response.data.isActive) {
+        dispatch({ type: actionTypes.PLAYER_WIN, payload: response.data });
+      }
+    } else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
   };
 }
 
