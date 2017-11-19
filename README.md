@@ -31,4 +31,5 @@ hackatomsk2017-gg1793pp </br>
  <li>BD - MongoDB + Mongoose</li>
  <li>Express js</li>
  <li>Для генерации случайно величины используется онлайн сервис Random.org</li>
+ 
   Для локальной отладки необходимо запускать браузер следующим образом: <strong> google-chrome-stable -disable-web-security -user-data-dir (Linux)</strong>. Т.к. браузер интерпритирует перенаправления между портами localhost, как междоменные перенаправления. На рельном сервере такой проблемы не будет.
