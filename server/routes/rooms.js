@@ -71,9 +71,9 @@ router.get('/list', function(req, res, next) {
         else if (rooms.length){
             for (var room of rooms){
                 room.userList.forEach(function (item) {
-                    if (req.session.username == item.userLogin){
+                    if (req.session.username == item){
                         if (!room.isActive){
-                            UserModel.findOne({'login': item.userLogin}, function (err, person) {
+                            UserModel.findOne({'login': item}, function (err, person) {
                                 if (err) console.log('error '+err);
                                 else if(person){
                                     person.currentRoom = null;
@@ -83,7 +83,6 @@ router.get('/list', function(req, res, next) {
                         }
                         response = myResponse(0,room,'');
                         res.send(response);
-                        return
                     }
                 })
             }

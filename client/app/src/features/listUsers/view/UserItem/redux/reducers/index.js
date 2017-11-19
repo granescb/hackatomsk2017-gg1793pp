@@ -10,8 +10,8 @@ function reducer(state = initialState, action) {
     case actionTypes.ACTION_PROCESSING:
       return imState
           .setIn(['actionProcessing'], true)
+          .setIn(['actionSuccess'], false)
           .setIn(['errorMessage'], null)
-          .setIn(['isOpenRoom'], false)
           .toJS();
 
     case actionTypes.ACTION_FAILURE:
@@ -19,24 +19,13 @@ function reducer(state = initialState, action) {
           .setIn(['actionProcessing'], false)
           .setIn(['actionSuccess'], false)
           .setIn(['errorMessage'], action.payload)
-          .setIn(['isOpenRoom'], false)
+          .toJS();
+    
+    case actionTypes.MAKE_BET:
+      return imState
+          .setIn(['activeRoom'], action.payload)
           .toJS();
 
-    case actionTypes.ADD_USER_ROOM:
-      return imState
-          .setIn(['actionProcessing'], false)
-          .setIn(['errorMessage'], null)
-          .setIn(['isOpenRoom'], true)
-          .toJS();
-
-    case actionTypes.PULLING_STATUS_ROOM:
-      return imState
-          .setIn(['actionProcessing'], false)
-          .setIn(['errorMessage'], null)
-          .setIn(['isOpenRoom'], action.payload.isActive)
-          .setIn(['userBets'], action.payload.userBets)
-          .setIn(['userList'], action.payload.userBets)
-          .toJS();
     default: 
       return imState.toJS();
   }
