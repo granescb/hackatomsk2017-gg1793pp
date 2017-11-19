@@ -1,24 +1,31 @@
 .duel-layout
   display flex
-  width 100%
+  width 85%
   flex-direction column
+  &__caption
+    font-weight bold
   &__start-panel
+    margin-bottom 20px
     display flex
   &__bet-panel
-    margin-top 20px
     display flex
     height 100px
     align-items center
-    background-color #ddd
+    background-color #242B52
     &_position
       &_left
         width 80%
+        display flex
+        color #FFF
+        flex-direction column
+        text-transform uppercase
       &_right
         flex-grow 1
         width 20%
+        padding 0 15px
+        background-color #423B3B
   &__button
     width 70px
-  
   &__message-container
     background-color #ddd
     display flex
