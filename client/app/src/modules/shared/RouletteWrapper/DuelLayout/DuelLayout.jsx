@@ -108,7 +108,6 @@ class DuelLayout extends Component {
         <div className={b('user-info-panel')}>
           <UserInfo 
             bank={info ? info.bank : ''}
-            chance={info ? info.chance : ''}
             deposit={info ? info.deposit : ''}
           />
         </div>

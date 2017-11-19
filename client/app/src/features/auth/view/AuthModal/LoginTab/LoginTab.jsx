@@ -53,10 +53,11 @@ class LoginTab extends Component {
             value={email}
             onChange={this.onInputChange}
             onKeyPress={this.onLoginInputKeyPress}
-          />
+            />
         </div>
         <div className={b('row')}>
           <LoginInput
+            placeholder="Пароль"
             type="password"
             name="password"
             value={password}
