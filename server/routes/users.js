@@ -81,6 +81,36 @@ router.post('/login', function (req, res, next) {
     });
 });
 
+router.get('/list', function(req, res, next) {
+    UserModel.find({}, function (err, person) {
+     if (err) return handleError(err);
+     else{
+        console.log(person);
+        console.log(req.session.authorized);
+        console.log(req.session.username);
+        res.send(person)
+     }
+    });
+});
+router.get('/signout', function (req, res, next) {
+    UserModel.findOne({
+    }, function (err, person) {
+        if (err) console.log('Error sign-in');
+        else if(person){
+            if (person.login){
+                req.session.authorized = null;
+                req.session.username = null;
+                req.session.userId = null;
+                req.cookies.user = null;
+                res.send(200);
+            }
+            else {
+                res.send('User not found');
+            }
+        }
+    });
+});
+
 router.get('/balance', function(req, res, next) {
     UserModel.findOne({'login': req.session.username}, function (err, person) {
      if (err) return handleError(err);
