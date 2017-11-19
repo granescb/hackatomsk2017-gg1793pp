@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import block from 'bem-cn';
-import { bind } from 'decko'
+import { bind } from 'decko';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import asyncPoll from 'react-async-poll';
@@ -38,7 +38,12 @@ class DuelLayout extends Component {
         <div className={b('start-panel')}>
           <div className={b('timer-container')}>
             <div className={b('button')}>
-              <Button disabled={isOpenRoom} onClick={() => this.onClickStart()}>Старт</Button>
+              <Button 
+                disabled={isOpenRoom} 
+                onClick={() => this.onClickStart()}
+                bsStyle="orange">
+                  Старт
+              </Button>
             </div>
           </div>
           <div className={b('message-container')}>
@@ -47,6 +52,9 @@ class DuelLayout extends Component {
         </div>
         <div className={b('bet-panel')}>
           <div className={b('bet-panel', { position: 'left' })}>
+            <div className={b('caption')}>
+                Участники
+            </div>
             <ListUsers />
           </div>
           <div className={b('bet-panel', { position: 'right' })}>
