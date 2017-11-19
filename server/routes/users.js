@@ -9,7 +9,7 @@ function saveObj(ogj) {
     ogj.save(function (err, person) {
       if (err){
           if (person){
-           console.log("Something goes wrong with user " + ogj.login);
+           console.log("Something goes wrong with user " + ogj);
           }
           else{
               console.log("Something goes wrong");
@@ -24,35 +24,31 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-    var newUser =  new UserModel({login: req.body.login,
+    var person =  new UserModel({login: req.body.login,
       password: req.body.password});
-    newUser.speak();
-    newUser.save(function (err, newUser) {
+    person.save(function (err, person) {
       if (err){
           //TODO
               // Требуется вываливание ошибок
-          if (err.code==11000){
-            console.log("Username is user");
-          }
-          else console.log("Something goes wrong with user " + newUser.login);
+          if (err.code==11000) console.log("Username is use");
+          else console.log("Something goes wrong with user " + person.login);
           response = myResponse(err.code, {}, 'User is deprecated');
-
       }
       else{
-          response = myResponse(0, {'login': newUser.login,
-                    'balance': newUser.balance}, '');
+          req.session.authorized = true;
+          req.session.username = person.login;
+          req.cookies.user = person.login;
+          response = myResponse(0, {'login': person.login,
+                    'balance': person.balance}, '');
       }
       res.send(response);
-    });
+  })
 });
 // this testing function
 router.get('/list', function(req, res, next) {
     UserModel.find({}, function (err, person) {
-     if (err) return handleError(err);
+     if (err) rres.send(myResponse(1,{},err));
      else{
-        console.log(person);
-        console.log(req.session.authorized);
-        console.log(req.session.username);
         res.send(person)
      }
     });
@@ -62,12 +58,11 @@ router.post('/login', function (req, res, next) {
         'login': req.body.login,
         'password': req.body.password
     }, function (err, person) {
-        if (err) console.log('Error sign-in');
+        if (err) res.send(myResponse(1,{},err));
         else if(person){
             if (person.login){
                 req.session.authorized = true;
                 req.session.username = person.login;
-                req.session.userId = person.id;
                 req.cookies.user = person.login;
                 console.log(person.login + (' is Login!'));
                 response = myResponse(0, {'login': person.login,
@@ -80,22 +75,10 @@ router.post('/login', function (req, res, next) {
         }
     });
 });
-
-router.get('/list', function(req, res, next) {
-    UserModel.find({}, function (err, person) {
-     if (err) return handleError(err);
-     else{
-        console.log(person);
-        console.log(req.session.authorized);
-        console.log(req.session.username);
-        res.send(person)
-     }
-    });
-});
 router.get('/signout', function (req, res, next) {
     UserModel.findOne({
     }, function (err, person) {
-        if (err) console.log('Error sign-in');
+        if (err) res.send(myResponse(1,{},err));
         else if(person){
             if (person.login){
                 req.session.authorized = null;
