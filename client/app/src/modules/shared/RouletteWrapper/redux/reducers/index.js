@@ -39,7 +39,7 @@ function reducer(state = initialState, action) {
           .setIn(['userBets'], action.payload.userBets)
           .setIn(['userList'], action.payload.userList)
           .toJS();
-    case actionTypes.PULLING_STATUS_ROOM_WIN_PLAY:
+    case actionTypes.PLAYER_WIN:
       return imState
           .setIn(['actionProcessing'], false)
           .setIn(['errorMessage'], null)

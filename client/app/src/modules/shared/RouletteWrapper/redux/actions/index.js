@@ -21,7 +21,7 @@ function pullingStatusRoom() {
   return async (dispatch, getState, extra) => {
     const { api } = extra;
     const response = await api.roulette.pullingStatusRoom();
-    if (response.success){
+    if (response.success) {
       dispatch({ type: actionTypes.PULLING_STATUS_ROOM, payload: response.data });
       if (response.data.isActive) {
         dispatch({ type: actionTypes.PLAYER_WIN, payload: response.data });
