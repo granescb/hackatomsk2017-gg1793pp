@@ -7,14 +7,14 @@ class BetApi extends BaseApi {
 
   constructor(baseUrl = '') {
     super(baseUrl);
-    this.baseUrl = `${baseUrl}`;
+    this.baseUrl = `${baseUrl}/api`;
   }
 
   @bind
   makeBet(amount) {
     return this.sendQuery(
       this.queryTypes.POST,
-      `${this.baseUrl}/topup/room`,
+      `${this.baseUrl}/rooms/place`,
       {
         amount,
       },

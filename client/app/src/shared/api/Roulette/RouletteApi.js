@@ -22,7 +22,7 @@ class RouletteApi extends BaseApi {
   pullingStatusRoom() {
     return this.sendQuery(
       this.queryTypes.GET,
-      `${this.baseUrl}/pulling`,
+      `${this.baseUrl}/rooms/list`,
     );
   }
 

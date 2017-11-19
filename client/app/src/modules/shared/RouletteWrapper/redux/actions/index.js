@@ -18,11 +18,10 @@ function addUserRoom() {
 
 function pullingStatusRoom() {
   return async (dispatch, getState, extra) => {
-    console.log('pulling')
-    // const { api } = extra;
-    // const response = await api.roulette.pullingStatusRoom();
-    // if (response.success) dispatch({ type: actionTypes.PULLING_STATUS_ROOM });
-    // else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
+    const { api } = extra;
+    const response = await api.roulette.pullingStatusRoom();
+    if (response.success) dispatch({ type: actionTypes.PULLING_STATUS_ROOM, payload: response.data });
+    else dispatch({ type: actionTypes.ACTION_FAILURE, payload: response.errorMessage });
   };
 }
 

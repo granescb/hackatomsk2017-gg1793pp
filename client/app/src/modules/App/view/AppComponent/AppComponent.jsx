@@ -21,6 +21,7 @@ class AppComponent extends Component {
 
   static propTypes = {
     children: PropTypes.element.isRequired,
+    logout: PropTypes.func.isRequired,
   }
 
   static contextTypes = {
@@ -33,10 +34,10 @@ class AppComponent extends Component {
 
   render() {
     const b = block('app-component');
-    const { children } = this.props;
+    const { children, logout } = this.props;
     return (
       <div className={b}>
-        <Header />
+        <Header logout={logout} />
         <div className={b('content')}>
           <div className={b('content', { position: 'left-block' })}>
             <Rooms />
@@ -63,6 +64,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   const actions = {
+    logout: authActions.logout,
   };
   return bindActionCreators(actions, dispatch);
 }
