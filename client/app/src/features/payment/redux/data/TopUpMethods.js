@@ -7,14 +7,14 @@ const RequisitesTypes = {
 };
   
 const TopUpMethods = {
-  // BITAPS: {
-  //   id: 0,
-  //   title: 'Bitaps',
-  //   destinationPlaceholder: 'Bitaps',
-  //   iconFileNames: [bitapsIcon],
-  //   isPaySystem: true,
-  //   requisitesType: RequisitesTypes.NONE,
-  // },
+  BITAPS: {
+    id: 0,
+    title: 'Bitaps',
+    destinationPlaceholder: 'Bitaps',
+    iconFileNames: [bitapsIcon],
+    isPaySystem: true,
+    requisitesType: RequisitesTypes.NONE,
+  },
 
   CANDYWRAPPERS: {
     id: 1,
