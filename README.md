@@ -22,7 +22,8 @@ hackatomsk2017-gg1793pp </br>
   <li>stylus</li>
   <li>bem-cm</li>
   <li>es-6</li>
-  <li>react router для SPA</li><br>
+  <li>react router для SPA</li>
+ </ul><br>
 
  <p>Сервер:</p> 
   <ul>
